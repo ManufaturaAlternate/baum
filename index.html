@@ -5,10 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="./src/output.css" rel="stylesheet">
     <script defer src="/_vercel/insights/script.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css"
-    />
+    
     <title>Vercel HTML Starter</title>
     <meta
       name="description"
@@ -16,25 +13,60 @@
     />
   </head>
 
+<header class="p-4 w-full relative text-black flex-initial bg-blue-500 border-none">
+      <h1 class="text-xl font-bold">Britta Text</h1>
+</header>  
 
-<body>
-    <header class="p-4 bg-blu-500 text-black">
-      <h1 class="text-3xl font-bold">Vercel HTML Starter</h1>
-    </header>
-    <main class="p-4">
-      <section>
-        <h2 class="text-2xl font-semibold mb-4">Welcome to Your Vercel HTML Starter!</h2>
-        <p class="mb-4">
-          This is a simple HTML starter template deployed on Vercel. You can customize it to fit your needs.
-        </p>
-        <p class="mb-4">
-          To get started, edit the <code>index.html</code> file and deploy your changes.
-        </p>
-        <a href="https://vercel.com/docs" class="text-blue-500 hover:underline">Learn more about Vercel</a>
-      </section>
-    </main>
-    <footer class="p-4 bg-gray-800 text-white text-center">
-      
-    </footer>
-</body>
+
+<main>
+<div>
+
+    <canvas id="glcanvas" width="100vw" height="100vh" tabindex="1"></canvas>
+
+    
+    <script type="text/javascript" src="js/cables.js"></script>
+<script type="text/javascript" src="js/ops.js"></script>
+
+    <script type="text/javascript"  src="js/cgl_copytexture.js"></script>
+
+
+    <script type="text/javascript">
+
+        function showError(initiator,...args)
+        {
+            CABLES.logErrorConsole("[" + initiator + "]", ...args);
+        }
+
+        function patchInitialized(patch)
+        {
+            // You can now access the patch object (patch), register variable watchers and so on
+        }
+
+        function patchFinishedLoading(patch)
+        {
+            // The patch is ready now, all assets have been loaded
+        }
+
+        document.addEventListener("CABLES.jsLoaded", function (event)
+        {
+            CABLES.patch = new CABLES.Patch({
+                patchFile: 'js/BaumIntro.json',
+                "prefixAssetPath": "",
+                "assetPath": "assets/",
+                "jsPath": "js/",
+                "glCanvasId": "glcanvas",
+                "glCanvasResizeToWindow": true,
+                "onError": showError,
+                "onPatchLoaded": patchInitialized,
+                "onFinishedLoading": patchFinishedLoading,
+                "canvas": {"alpha":true, "premultipliedAlpha":true } // make canvas transparent
+            });
+        });
+
+        // disable rubberband effect on mobile devices
+        document.getElementById('glcanvas').addEventListener('touchmove', (e)=>{ e.preventDefault(); }, false);
+    </script>
+
+    </div>
+  </main>
 </html>
