@@ -1,8 +1,17 @@
 document.addEventListener('DOMContentLoaded', function() {
   const back = document.getElementById('from3');
-  const target = document.getElementById('target3');
-  if (back && target) {
+  function getTarget() {
+    // Use matchMedia to check if screen is small
+    if (window.matchMedia('(max-width: 639px)').matches) {
+      return document.getElementById('target3-img');
+    } else {
+      return document.getElementById('target3-canvas');
+    }
+  }
+  if (back) {
     back.addEventListener('click', function() {
+      const target = getTarget();
+      if (!target) return;
       const targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
       const startPosition = window.pageYOffset;
       const distance = targetPosition - startPosition;
