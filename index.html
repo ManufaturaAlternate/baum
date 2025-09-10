@@ -13,7 +13,7 @@
     />
   </head>
 
-<body class="no-scrollbar overflow-auto sm:overflow-hidden bg-brand text-lg md:text-xl lg:text-2xl">
+<body class="no-scrollbar overflow-visible md:overflow-hidden bg-brand text-lg md:text-xl lg:text-2xl">
   <div class="fade-in-2">
     <div class="relative z-10 min-h-screen min-w-screen border-none">
         <header class="pt-2 pb-4 px-2 lg:px-4 flex fixed inset-x-0 top-0 justify-between text-black bg-transparent border-none">
@@ -80,7 +80,7 @@
         });
 
         // disable rubberband effect on mobile devices
-        document.getElementById('glcanvas').addEventListener('touchmove', (e)=>{ e.preventDefault(); }, false);
+        // document.getElementById('glcanvas').addEventListener('touchmove', (e)=>{ e.preventDefault(); }, false);
   </script>
  </div>
 
@@ -90,7 +90,7 @@
 </div>
 
 <div id="target" class="fade-in-on-scroll mx-auto min-h-full h-screen place-content-center bg-brand">
-        <p class="p-16 font-droulers text-base xl:lg place-self-center whitespace-pre-wrap text-pretty">
+        <p class="p-4 sm:p-8 md:p-16 font-droulers text-sm sm:text-base xl:text-lg place-self-center whitespace-pre-wrap text-pretty">
 Britta Baumann is a german conceptual artist working with photography. She is living and working in Lisbon (PT) and Frankfurt (GER). She studied photography and Multimedia Art at Belas-Artes da Universidade de Lisboa, Faculty of Fine Arts and at the University of Applied Sciences and Arts, Dortmund. 
 In masterclasses with renowned international artist, photographers and editors, she has been continually strengthening her photography skills for many years and working intensively on her portfolio.
 She works with own photographs, text, video and found footage and uses multiple experimental forms to expand the boundaries of visual art.
