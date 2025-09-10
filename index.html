@@ -1,31 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="no-scrollbar" lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="./src/output.css" rel="stylesheet">
     <script defer src="/_vercel/insights/script.js"></script>
     
-    <title>Vercel HTML Starter</title>
+    <title>Chaos Zone</title>
     <meta
       name="description"
       content="Britta Baumannn"
     />
   </head>
 
-<header class="p-4 w-full relative text-black flex-initial bg-blue-500 border-none">
-      <h1 class="text-xl font-bold">Britta Text</h1>
-</header>  
+<body class="no-scrollbar bg-brand text-lg md:text-xl lg:text-2xl">
+  <div class="fade-in-2">
+    <div class="relative z-10 min-h-screen min-w-screen">
+        <header class="pt-2 pb-4 px-2 lg:px-4 flex fixed inset-x-0 top-0 justify-between text-black bg-transparent border-none">
+          
+          <p class="font-droulers ">Britta Baumann</p>
+          <a href="pages/chaos.html" class="font-droulers"> Chaos Project</a>
+        </header>  
+
+        <footer class="pt-4 pb-2 px-2 lg:px-4 flex w-full fixed inset-x-0 bottom-0 justify-between  text-black  bg-transparent border-none text-center">
+          <p class="font-droulers  text-left">Archive</p>
+          <!-- <p class="font-droulers  flex-1 text-center">Under Construction</p> -->
+          <p id="from" class="cursor-pointer font-droulers   text-right ">Bio</p>
+        </footer>
+    </div>
 
 
-<main>
-<div>
+  <div class="absolute top-0 z-0 fade-in-3">
 
-    <canvas id="glcanvas" width="100vw" height="100vh" tabindex="1"></canvas>
+    <canvas id="glcanvas" tabindex="1"></canvas>
 
     
     <script type="text/javascript" src="js/cables.js"></script>
-<script type="text/javascript" src="js/ops.js"></script>
+    <script type="text/javascript" src="js/ops.js"></script>
 
     <script type="text/javascript"  src="js/cgl_copytexture.js"></script>
 
@@ -65,8 +76,26 @@
 
         // disable rubberband effect on mobile devices
         document.getElementById('glcanvas').addEventListener('touchmove', (e)=>{ e.preventDefault(); }, false);
-    </script>
+  </script>
+ </div>
 
-    </div>
-  </main>
+ 
+
+
+</div>
+
+<div id="target" class="fade-in-on-scroll mx-auto min-h-full h-screen place-content-center bg-brand">
+        <p class="p-16 font-droulers text-base xl:lg place-self-center whitespace-pre-wrap text-pretty">
+Britta Baumann is a german conceptual artist working with photography. She is living and working in Lisbon (PT) and Frankfurt (GER). She studied photography and Multimedia Art at Belas-Artes da Universidade de Lisboa, Faculty of Fine Arts and at the University of Applied Sciences and Arts, Dortmund. 
+In masterclasses with renowned international artist, photographers and editors, she has been continually strengthening her photography skills for many years and working intensively on her portfolio.
+She works with own photographs, text, video and found footage and uses multiple experimental forms to expand the boundaries of visual art.
+Commissioned work for newspapers, magazines and companies worldwide.
+An appointed member of DGPh.
+        </p>
+
+</div>
+<script src="js/scroll.js"></script>
+
+
+</body>
 </html>
