@@ -13,24 +13,29 @@
     />
   </head>
 
-<body class="no-scrollbar bg-brand text-lg md:text-xl lg:text-2xl">
+<body class="no-scrollbar overflow-hidden bg-brand text-lg md:text-xl lg:text-2xl">
   <div class="fade-in-2">
-    <div class="relative z-10 min-h-screen min-w-screen">
+    <div class="relative z-10 min-h-screen min-w-screen border-none">
         <header class="pt-2 pb-4 px-2 lg:px-4 flex fixed inset-x-0 top-0 justify-between text-black bg-transparent border-none">
           
-          <p class="font-droulers ">Britta Baumann</p>
+          <p  id="from3" class="cursor-pointer font-droulers ">Britta Baumann</p>
           <a href="pages/chaos.html" class="font-droulers"> Chaos Project</a>
         </header>  
 
         <footer class="pt-4 pb-2 px-2 lg:px-4 flex w-full fixed inset-x-0 bottom-0 justify-between  text-black  bg-transparent border-none text-center">
-          <p class="font-droulers  text-left">Archive/Editions</p>
+          <p class="font-droulers  text-left whitespace-pre-line">Works
+            Editions</p>
           <!-- <p class="font-droulers  flex-1 text-center">Under Construction</p> -->
+          <div>
           <p id="from" class="cursor-pointer font-droulers   text-right ">Bio</p>
+          <p id="from2" class="cursor-pointer font-droulers   text-right ">Contact</p>
+          </div>
+          
         </footer>
     </div>
 
 
-  <div class="absolute top-0 z-0 fade-in-3">
+  <div id="target3" class="absolute top-0 z-0 fade-in-3 border-none">
 
     <canvas id="glcanvas" tabindex="1"></canvas>
 
@@ -94,7 +99,17 @@ An appointed member of DGPh.
         </p>
 
 </div>
+
+<div id="target2" class=" mx-auto min-h-full h-screen place-content-center bg-brand">
+        <p class="p-16 font-droulers text-base xl:lg place-self-center whitespace-pre-wrap text-pretty">
+Contact Area,impressum,datenschutz
+        </p>
+
+</div>
+
 <script src="js/scroll.js"></script>
+<script src="js/scrollContact.js"></script>
+<script src="js/scrollBack.js"></script>
 
 
 </body>
