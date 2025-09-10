@@ -53,3 +53,8 @@ body.no-scrollbar::-webkit-scrollbar {
 .bg-brand {
   background-color: #F1F1EF;
 }
+
+
+.font-droulers .absolute {
+  width: 100%;
+}
