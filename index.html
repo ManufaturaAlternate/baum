@@ -37,11 +37,20 @@
         </footer>
     </div>
 
+<!-- Static image container (visible on small screens) -->
+<div class="block sm:hidden absolute top-0 z-0 w-full fade-in-3 h-screen bg-transparent">
+  <img src="assets/canvas-static.png" alt="Static Canvas" class="w-full h-full object-cover" />
+</div>
 
-  <div id="target3" class="absolute top-0 z-0 fade-in-3 border-none">
 
-    <canvas id="glcanvas" tabindex="1"></canvas>
 
+
+
+  <div id="target3" class="hidden sm:block absolute top-0 z-0 fade-in-3 border-none w-full h-screen">
+
+    
+   
+         <canvas id="glcanvas" tabindex="1" class="w-full h-full"></canvas>
     
     <script type="text/javascript" src="js/cables.js"></script>
     <script type="text/javascript" src="js/ops.js"></script>
