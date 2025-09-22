@@ -2613,6 +2613,113 @@ CABLES.OPS["55647083-131d-4c70-b667-21fecf311ea5"]={f:Ops.Gl.ImageCompose.Sharpe
 
 
 
+
+// **************************************************************
+// 
+// Ops.Math.Math
+// 
+// **************************************************************
+
+Ops.Math.Math= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const num0 = op.inFloat("number 0", 0),
+    num1 = op.inFloat("number 1", 0),
+    mathDropDown = op.inSwitch("math mode", ["+", "-", "*", "/", "%", "min", "max"], "+"),
+    result = op.outNumber("result");
+
+let mathFunc;
+
+num0.onChange = num1.onChange = update;
+mathDropDown.onChange = onFilterChange;
+
+let n0 = 0;
+let n1 = 0;
+
+const mathFuncAdd = function (a, b) { return a + b; };
+const mathFuncSub = function (a, b) { return a - b; };
+const mathFuncMul = function (a, b) { return a * b; };
+const mathFuncDiv = function (a, b) { return a / b; };
+const mathFuncMod = function (a, b) { return a % b; };
+const mathFuncMin = function (a, b) { return Math.min(a, b); };
+const mathFuncMax = function (a, b) { return Math.max(a, b); };
+
+function onFilterChange()
+{
+    let mathSelectValue = mathDropDown.get();
+
+    if (mathSelectValue == "+") mathFunc = mathFuncAdd;
+    else if (mathSelectValue == "-") mathFunc = mathFuncSub;
+    else if (mathSelectValue == "*") mathFunc = mathFuncMul;
+    else if (mathSelectValue == "/") mathFunc = mathFuncDiv;
+    else if (mathSelectValue == "%") mathFunc = mathFuncMod;
+    else if (mathSelectValue == "min") mathFunc = mathFuncMin;
+    else if (mathSelectValue == "max") mathFunc = mathFuncMax;
+    update();
+    op.setUiAttrib({ "extendTitle": mathSelectValue });
+}
+
+function update()
+{
+    n0 = num0.get();
+    n1 = num1.get();
+
+    result.set(mathFunc(n0, n1));
+}
+
+onFilterChange();
+
+}
+};
+
+CABLES.OPS["e9fdcaca-a007-4563-8a4d-e94e08506e0f"]={f:Ops.Math.Math,objName:"Ops.Math.Math"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Math.Clamp
+// 
+// **************************************************************
+
+Ops.Math.Clamp= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const
+    val = op.inValueFloat("val", 0.5),
+    min = op.inValueFloat("min", 0),
+    max = op.inValueFloat("max", 1),
+    ignore = op.inValueBool("ignore outside values"),
+    result = op.outNumber("result");
+
+val.onChange = min.onChange = max.onChange = clamp;
+
+function clamp()
+{
+    if (ignore.get())
+    {
+        if (val.get() > max.get()) return;
+        if (val.get() < min.get()) return;
+    }
+    result.set(Math.min(Math.max(val.get(), min.get()), max.get()));
+}
+
+}
+};
+
+CABLES.OPS["cda1a98e-5e16-40bd-9b18-a67e9eaad5a1"]={f:Ops.Math.Clamp,objName:"Ops.Math.Clamp"};
+
+
+
 window.addEventListener('load', function(event) {
 CABLES.jsLoaded=new Event('CABLES.jsLoaded');
 document.dispatchEvent(CABLES.jsLoaded);

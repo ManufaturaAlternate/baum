@@ -6,8 +6,19 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: "Droulers2";
+  src: url("./fonts/DroulersTEST2-Regular.otf") format("opentype");
+  font-weight: medium;
+  font-style: normal;
+}
+
 .font-droulers {
   font-family: "Droulers", sans-serif;
+}
+
+.font-droulers2 {
+  font-family: "Droulers2", sans-serif;
 }
 
 @keyframes fadeIn {
@@ -23,7 +34,7 @@
   animation: fadeIn 3s ease-in ;
 }
 
-.fade-in-on-scroll {
+.fade-in-on-scroll {    
   opacity: 0;
   transition: opacity 2.5s ease-in;
 }
@@ -57,4 +68,12 @@ body.no-scrollbar::-webkit-scrollbar {
 
 .font-droulers .absolute {
   width: 100%;
+}
+
+
+.font-stroke-hover {
+  transition: font-family 0.1 ease-in-out;
+}
+.font-stroke-hover:hover {
+  font-family: "Droulers2", sans-serif;
 }
