@@ -77,3 +77,7 @@ body.no-scrollbar::-webkit-scrollbar {
 .font-stroke-hover:hover {
   font-family: "Droulers2", sans-serif;
 }
+
+.inset-0 {
+  inset: 0;
+}

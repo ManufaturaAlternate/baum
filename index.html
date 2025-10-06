@@ -22,9 +22,13 @@
               <span class="absolute left-3 lg:left-4 top-0 transition-all duration-1000 ease-in-out opacity-0 group-hover:opacity-100 group-hover:translate-x-0 translate-x-[-1rem] whitespace-nowrap font-droulers">ritta</span>
             <span class="font-droulers inline-block -ml-2  transition-all duration-1000 ease-in-out group-hover:ml-14 lg:group-hover:ml-18 whitespace-nowrap">Baumann</span>
         </div>
-          <a href="pages/chaos.html" class="relative group">
-            <span class="font-droulers transition-opacity duration-200 ease-in group-hover:opacity-0">Chaos Project</span>
-            <span class="font-droulers2 absolute left-0 top-0 opacity-0 transition-opacity duration-200 ease-in group-hover:opacity-100">Chaos Project</span>
+          <a href="pages/chaos.html" class="relative group cursor-none">
+            <!-- Normal state text -->
+            <span class="font-droulers block transition-opacity duration-200 ease-in group-hover:opacity-0">Chaos Project</span>
+            <!-- Hover state text -->
+            <span class="font-droulers2 absolute inset-0 opacity-0 transition-opacity duration-200 ease-in group-hover:opacity-100">Chaos Project</span>
+            <!-- Spacer to maintain layout -->
+            <span aria-hidden="true" class="block invisible">Chaos Project</span>
           </a>
       </header>
 
