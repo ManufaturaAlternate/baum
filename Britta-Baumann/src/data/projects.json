@@ -1,0 +1,58 @@
+{
+  "featured": [
+    {
+      "id": "project-01",
+      "title": "Project Title One",
+      "category": "Brand Identity",
+      "year": "2024",
+      "description": "Brief description of the project and its impact.",
+      "tags": ["Branding", "Design", "Strategy"],
+      "images": {
+        "thumbnail": "/images/projects/project-01/thumb.jpg",
+        "hero": "/images/projects/project-01/hero.jpg",
+        "gallery": [
+          "/images/projects/project-01/img-01.jpg",
+          "/images/projects/project-01/img-02.jpg"
+        ]
+      },
+      "details": {
+        "client": "Client Name",
+        "duration": "3 months",
+        "role": "Creative Director",
+        "deliverables": ["Brand Identity", "Style Guide", "Marketing Materials"]
+      },
+      "featured": true,
+      "status": "completed"
+    },
+    {
+      "id": "project-02",
+      "title": "Project Title Two",
+      "category": "Web Design",
+      "year": "2024",
+      "description": "Another project description highlighting key achievements.",
+      "tags": ["Web Design", "UX", "Development"],
+      "images": {
+        "thumbnail": "/images/projects/project-02/thumb.jpg",
+        "hero": "/images/projects/project-02/hero.jpg",
+        "gallery": [
+          "/images/projects/project-02/img-01.jpg"
+        ]
+      },
+      "details": {
+        "client": "Another Client",
+        "duration": "2 months",
+        "role": "UX Designer",
+        "deliverables": ["Website Design", "Prototype", "Style System"]
+      },
+      "featured": true,
+      "status": "completed"
+    }
+  ],
+  "categories": [
+    "All",
+    "Brand Identity",
+    "Web Design",
+    "Digital Strategy",
+    "Print Design"
+  ]
+}

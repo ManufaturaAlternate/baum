@@ -1,0 +1,34 @@
+{
+  "main": [
+    {
+      "label": "Home",
+      "path": "/",
+      "active": true
+    },
+    {
+      "label": "Work",
+      "path": "/work",
+      "active": false
+    },
+    {
+      "label": "About",
+      "path": "/about",
+      "active": false
+    },
+    {
+      "label": "Contact",
+      "path": "/contact",
+      "active": false
+    }
+  ],
+  "footer": [
+    {
+      "label": "Privacy",
+      "path": "/privacy"
+    },
+    {
+      "label": "Imprint",
+      "path": "/imprint"
+    }
+  ]
+}

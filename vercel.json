@@ -1,0 +1,26 @@
+{
+  "version": 2,
+  "name": "britta-baumann-portfolio",
+  "builds": [
+    {
+      "src": "Britta-Baumann/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "Britta-Baumann/dist"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ],
+  "buildCommand": "cd Britta-Baumann && npm run build",
+  "devCommand": "cd Britta-Baumann && npm run dev",
+  "installCommand": "cd Britta-Baumann && npm install",
+  "outputDirectory": "Britta-Baumann/dist"
+}

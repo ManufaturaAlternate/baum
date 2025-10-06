@@ -1,15 +1,20 @@
 {
+  "name": "baum-portfolio-workspace",
   "private": true,
+  "version": "1.0.0",
+  "description": "Portfolio workspace containing Britta Baumann's website",
+  "scripts": {
+    "dev": "cd Britta-Baumann && npm run dev",
+    "build": "cd Britta-Baumann && npm run build",
+    "preview": "cd Britta-Baumann && npm run preview",
+    "install:portfolio": "cd Britta-Baumann && npm install"
+  },
+  "workspaces": [
+    "Britta-Baumann"
+  ],
   "dependencies": {
     "@vercel/edge": "^0.1.2",
     "lenis": "^1.3.11"
-  },
-  "name": "baum",
-  "version": "1.0.0",
-  "description": "---\r name: HTML Starter\r slug: html-starter-with-analytics\r description: HTML5 template with analytics and advanced routing configuration.\r deployUrl: https://vercel.com/new/clone?repository-url=https://github.com/vercel/examples/tree/main/solutions/html&project-name=html\r relatedTemplates:\r   - nextjs-boilerplate\r ---",
-  "main": "middleware.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",

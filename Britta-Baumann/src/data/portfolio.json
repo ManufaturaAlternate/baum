@@ -1,0 +1,44 @@
+{
+  "personal": {
+    "name": "Britta Baumann",
+    "title": "Creative Professional & Designer",
+    "bio": "Passionate about creating meaningful experiences through design and innovation. Based in Germany, working globally.",
+    "location": "Germany",
+    "email": "hello@brittabaumann.com",
+    "website": "https://brittabaumann.vercel.app",
+    "social": {
+      "linkedin": "https://linkedin.com/in/brittabaumann",
+      "instagram": "https://instagram.com/brittabaumann",
+      "behance": "https://behance.net/brittabaumann",
+      "dribbble": "https://dribbble.com/brittabaumann"
+    }
+  },
+  "hero": {
+    "headline": "Creating Digital Experiences",
+    "subheadline": "With passion for design and attention to detail",
+    "cta": "View My Work",
+    "backgroundImage": "/images/hero-bg.jpg"
+  },
+  "about": {
+    "description": "I'm a creative professional with expertise in design and digital experiences. I believe in the power of good design to solve problems and create meaningful connections between brands and their audiences.",
+    "skills": [
+      "UI/UX Design",
+      "Brand Identity",
+      "Digital Strategy",
+      "Creative Direction",
+      "Web Design",
+      "Typography"
+    ],
+    "experience": "5+ years in creative industry",
+    "education": {
+      "degree": "Bachelor of Arts in Design",
+      "institution": "Design University",
+      "year": "2019"
+    }
+  },
+  "seo": {
+    "title": "Britta Baumann - Creative Professional & Designer",
+    "description": "Portfolio of Britta Baumann, a creative professional specializing in UI/UX design, brand identity, and digital experiences.",
+    "keywords": ["design", "creative", "portfolio", "UI/UX", "branding", "digital"]
+  }
+}
