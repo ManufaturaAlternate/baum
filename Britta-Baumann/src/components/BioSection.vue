@@ -2,7 +2,7 @@
   <section 
     id="bio-section"
     ref="targetRef"
-    class="sticky top-0 h-[60vh] bg-brand overflow-hidden"
+    class="sticky top-0 h-[100vh] bg-brand overflow-hidden"
     :class="{ 'visible': isVisible }"
   >
     <div 

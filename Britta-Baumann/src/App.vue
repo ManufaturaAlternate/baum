@@ -1,15 +1,15 @@
 <template>
   <main>
-    <div id="canvas-container" class="h-screen">
+    <div id="canvas-container" class="h-screen" data-lenis-snap>
       <CanvasSection />
     <Header />
 
     
     </div>
-    <div id="bio-container" class="w-full min-h-screen">
+    <div id="bio-container" class="w-full min-h-screen" data-lenis-snap>
       <BioSection />
     </div>
-    <div id="contact-container" class="min-h-screen">
+    <div id="contact-container" class="min-h-screen" data-lenis-snap>
       <ContactSection />
     </div>
     <Footer />
@@ -19,6 +19,7 @@
 <script setup>
 import { onMounted, onUnmounted } from 'vue'
 import Lenis from '@studio-freight/lenis'
+
 import { provideHover } from './composables/useHover'
 import { provideLenis } from './composables/useLenis'
 import Header from './components/Header.vue'
@@ -30,7 +31,7 @@ import ContactSection from './components/ContactSection.vue'
 provideHover()
 
 const lenis = new Lenis({
-  duration: 0.4,
+  duration: 1.4,
   easing: (t) => Math.min(1, 1.001 - Math.pow(2, -13 * t)),
   orientation: 'vertical',
   gestureOrientation: 'vertical',
@@ -41,7 +42,16 @@ const lenis = new Lenis({
   touchMultiplier: 2,
   syncTouch: true,
   syncTouchLerp: 0.075,
-  infinite: false
+  infinite: false,
+  snapType: 'mandatory',
+  snapDirections: {
+    y: true,
+    x: false
+  },
+  snapSizes: {
+    y: 100,  // percentage of viewport height
+    x: 100
+    }
 })
 
 provideLenis(lenis)
@@ -60,6 +70,9 @@ onMounted(() => {
   lenis.on('scroll', ({ velocity }) => {
     document.documentElement.style.setProperty('--scroll-velocity', velocity)
   })
+
+ 
+
 })
 
 onUnmounted(() => {
