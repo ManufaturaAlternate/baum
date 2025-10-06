@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" class="no-scrollbar">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/main.css" rel="stylesheet">
+    <title>Britta Baumann</title>
+
+  <style>
+      /* Hide default cursor globally */
+      html, 
+      body,
+      a, 
+      button, 
+      [role="button"],
+      .cursor-pointer,
+      .hover-trigger {
+        cursor: none !important;
+      }
+    </style>
+
+
+  </head>
+
+
+  
+  <body class=" bg-brand text-base lg:text-lg xl:text-lg 2xl:text-xl antialiased">
+    <!-- Vue app mounts here -->
+    <div id="app"></div>
+    
+    <!-- Load CABLES scripts before Vue -->
+    <script src="/cables.js"></script>
+    <script src="/ops.js"></script>
+    <script src="/cgl_copytexture.js"></script>
+    
+    <!-- Vue app script -->
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
