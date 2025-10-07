@@ -6,20 +6,23 @@
         @mouseenter="isHovered = true"
         @mouseleave="isHovered = false"
         @click="scrollToCanvas"
+        role="button"
+        tabindex="0"
+        :aria-label="textData.accessibility.aria_labels.logo_button"
       >
-        <span class="font-droulers absolute">B</span>
-        <span class="absolute left-2 lg:left-3 transition-all duration-1000 ease-in-out opacity-0 group-hover:opacity-100 group-hover:translate-x-0 translate-x-[-1rem] font-droulers">ritta</span>
-        <span class="font-droulers absolute ml-4 transition-all duration-1000 ease-in-out group-hover:ml-16 lg:group-hover:ml-20 whitespace-nowrap">Baumann</span>
+        <span class="font-droulers absolute">{{ textData.header.name.first }}</span>
+        <span class="absolute left-2 lg:left-3 transition-all duration-1000 ease-in-out opacity-0 group-hover:opacity-100 group-hover:translate-x-0 translate-x-[-1rem] font-droulers">{{ textData.header.name.middle }}</span>
+        <span class="font-droulers absolute ml-4 transition-all duration-1000 ease-in-out group-hover:ml-16 lg:group-hover:ml-20 whitespace-nowrap">{{ textData.header.name.last }}</span>
       </div>
       <a 
         href="/chaos.html" 
-        class="relative group cursor-none"
+        class="relative group cursor-none inline-block"
         @mouseenter="isHovered = true"
         @mouseleave="isHovered = false"
+        :aria-label="textData.accessibility.aria_labels.chaos_link"
       >
-        <span class="font-droulers transition-opacity duration-200 ease-in group-hover:opacity-0">Chaos Project</span>
-        <span class="font-droulers2 absolute left-0 top-0 opacity-0 transition-opacity duration-200 ease-in group-hover:opacity-100">Chaos Project</span>
-        
+        <span class="font-droulers transition-opacity duration-200 ease-in group-hover:opacity-0 block">{{ textData.header.chaos_project }}</span>
+        <span class="font-droulers2 absolute inset-0 opacity-0 transition-opacity duration-200 ease-in group-hover:opacity-100 block">{{ textData.header.chaos_project }}</span>
       </a>
     </header>
 
@@ -72,15 +75,16 @@ import { ref } from 'vue'
 import { useCursor } from '../composables/useCursor'
 import { useScroll } from '../composables/useScroll'
 import { useHover } from '../composables/useHover'
+import textData from '@/data/text.json'
 
 const { cursorX, cursorY, isHidden } = useCursor()
 const { scrollToElement } = useScroll()
 const { isHovered, setHovered } = useHover()
 
 function scrollToCanvas() {
-  const canvasSection = document.getElementById('canvas-section')
-  if (canvasSection) {
-    scrollToElement(canvasSection)
+  const canvasContainer = document.getElementById('canvas-container')
+  if (canvasContainer) {
+    scrollToElement(canvasContainer)
   }
 }
 </script>

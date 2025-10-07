@@ -1,0 +1,43 @@
+{
+  "header": {
+    "name": {
+      "first": "B",
+      "middle": "ritta",
+      "last": "Baumann"
+    },
+    "chaos_project": "Chaos Project"
+  },
+  "footer": {
+    "left": {
+      "works": "Works",
+      "editions": "Editions"
+    },
+    "right": {
+      "bio": "Bio",
+      "contact": "Contact"
+    }
+  },
+  "navigation": {
+    "sections": {
+      "home": "Home",
+      "about": "About", 
+      "contact": "Contact"
+    }
+  },
+  "accessibility": {
+    "scroll_announcements": {
+      "home": "Now viewing Home section",
+      "about": "Now viewing About section", 
+      "contact": "Now viewing Contact section"
+    },
+    "aria_labels": {
+      "main": "Britta Baumann Portfolio",
+      "hero": "Hero section with canvas animation",
+      "about": "About Britta Baumann",
+      "contact": "Contact information",
+      "footer": "Site footer",
+      "logo_button": "Britta Baumann - Go to home section",
+      "chaos_link": "Visit Chaos Project"
+    }
+  }
+}

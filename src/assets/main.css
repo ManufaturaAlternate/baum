@@ -219,4 +219,174 @@
       opacity: 1;
     }
   }
+
+  /* Lenis smooth scrolling styles */
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.sticky {
+  position: sticky;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+:root {
+  --scroll-velocity: 0;
+}
+
+/* Screen reader only class for accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Focus styles for keyboard navigation */
+*:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Skip to content link */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: #3b82f6;
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  z-index: 1000;
+  transition: top 0.3s;
+}
+
+.skip-link:focus {
+  top: 6px;
+}
+
+/* Bio content parallax wrapper */
+.bio-content {
+  will-change: transform;
+  position: relative;
+  z-index: 1;
+}
+
+/* Header z-index - highest priority */
+header {
+  z-index: 1000;
+}
+
+/* Footer z-index - second highest */
+footer {
+  z-index: 999;
+}
+
+/* Main content sections */
+#canvas-container {
+  z-index: 1;
+}
+
+#bio-container {
+  z-index: 2;
+}
+
+#contact-container {
+  z-index: 1;
+}
+
+/* Ensure smooth transitions for snap elements */
+[data-lenis-snap] {
+  transition: none; /* Let Lenis handle all transitions */
+  position: relative;
+}
+
+/* Optional: Add visual indicators for sections */
+@media (hover: hover) {
+  [data-lenis-snap] {
+    position: relative;
+  }
+  
+  [data-lenis-snap]::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: rgba(59, 130, 246, 0.1);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  [data-lenis-snap]:hover::before {
+    opacity: 1;
+  }
+}
+
+/* Fix Chaos Project positioning - ensure both fonts occupy same space */
+header a.group {
+  position: relative;
+  display: inline-block;
+}
+
+header a.group span {
+  display: block;
+}
+
+header a.group span.absolute {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Ensure both font variants have identical metrics */
+.font-droulers,
+.font-droulers2 {
+  line-height: 1;
+  vertical-align: baseline;
+}
+
+/* Fix Footer text positioning - ensure both fonts occupy same space */
+footer p.group {
+  position: relative;
+  display: inline-block;
+}
+
+footer p.group span {
+  display: block;
+}
+
+footer p.group span.absolute {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Specific alignment for left and right text */
+footer p.group.text-left span.absolute {
+  left: 0;
+  text-align: left;
+}
+
+footer p.group.text-right span.absolute {
+  right: 0;
+  text-align: right;
 }

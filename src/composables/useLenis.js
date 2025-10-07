@@ -1,15 +1,11 @@
-import { ref, provide, inject } from 'vue'
+import { provide, inject } from 'vue'
 
-const lenisKey = Symbol('lenis')
+const LENIS_KEY = Symbol('lenis')
 
 export function provideLenis(lenis) {
-  provide(lenisKey, lenis)
+  provide(LENIS_KEY, lenis)
 }
 
 export function useLenis() {
-  const lenis = inject(lenisKey)
-  if (!lenis) {
-    throw new Error('useLenis must be used with provideLenis')
-  }
-  return lenis
+  return inject(LENIS_KEY, null)
 }
