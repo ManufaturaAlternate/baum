@@ -18,7 +18,7 @@
 
 <script setup>
 import { onMounted, onUnmounted } from 'vue'
-import Lenis from '@studio-freight/lenis'
+import Lenis from 'lenis'
 
 import { provideHover } from './composables/useHover'
 import { provideLenis } from './composables/useLenis'
