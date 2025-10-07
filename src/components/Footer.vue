@@ -50,14 +50,14 @@ const { isHovered, setHovered } = useHover()
 function scrollToBio() {
   const bioContainer = document.getElementById('bio-container')
   if (bioContainer) {
-    scrollToElement(bioContainer)
+    scrollToElement(bioContainer) // Ensure this function is optimized for quick scrolling
   }
 }
 
 function scrollToContact() {
   const contactContainer = document.getElementById('contact-container')
   if (contactContainer) {
-    scrollToElement(contactContainer)
+    scrollToElement(contactContainer) // Ensure this function is optimized for quick scrolling
   }
 }
 </script>

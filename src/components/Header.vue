@@ -84,7 +84,7 @@ const { isHovered, setHovered } = useHover()
 function scrollToCanvas() {
   const canvasContainer = document.getElementById('canvas-container')
   if (canvasContainer) {
-    scrollToElement(canvasContainer)
+    scrollToElement(canvasContainer) // Ensure this function is optimized for quick scrolling
   }
 }
 </script>

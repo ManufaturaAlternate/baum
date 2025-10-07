@@ -57,12 +57,12 @@ import textData from '@/data/text.json'
 provideHover()
 
 const lenis = new Lenis({
-  duration: 2.2, // Longer duration for extended smoothness
+  duration: 2.4, // Longer duration for extended smoothness
   easing: (t) => Math.min(1, 1.001 - Math.pow(2, -13 * t)),
   orientation: 'vertical',
   gestureOrientation: 'vertical',
   smoothWheel: true,
-  wheelMultiplier: 0.6, // Ultra-gentle
+  wheelMultiplier: 0.7, // Ultra-gentle
   lerp: 0.05, // Increased for more responsive manual scrolls
   smoothTouch: false,
   touchMultiplier: 2,
@@ -126,7 +126,7 @@ const smoothSnapTo = (element) => {
   const targetPosition = element._snapTarget || element.offsetTop
   
   lenis.scrollTo(targetPosition, {
-    duration: 2.4,
+    duration: 1.8,
     easing: (t) => {
       return 1 - Math.pow(1 - t, 3)
     },
@@ -161,7 +161,7 @@ onMounted(() => {
     clearTimeout(snapTimeout)
     
     // Simple snap logic - only when velocity is very low
-    if (!isSnapping && Math.abs(velocity) < 0.02) {
+    if (!isSnapping && Math.abs(velocity) < 0.5) { // Adjusted threshold for quicker response
       snapTimeout = setTimeout(() => {
         if (!isSnapping) {
           const closestElement = findClosestSnapPoint()
@@ -175,7 +175,7 @@ onMounted(() => {
             }
           }
         }
-      }, 300) // Shorter delay for better responsiveness
+      }, 30) // Reduced delay to 30ms for quicker snapping
     }
   })
 
