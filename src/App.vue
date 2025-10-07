@@ -1,18 +1,39 @@
 <template>
-  <main>
-    <div id="canvas-container" class="h-screen" data-lenis-snap>
+  <main role="main" aria-label="Britta Baumann Portfolio">
+    <div 
+      id="canvas-container" 
+      class="h-screen" 
+      data-lenis-snap
+      role="banner"
+      aria-label="Hero section with canvas animation"
+    >
       <CanvasSection />
-    <Header />
-
-    
+      <Header />
     </div>
-    <div id="bio-container" class="w-full min-h-screen" data-lenis-snap>
+    
+    <div 
+      id="bio-container" 
+      class="w-full min-h-screen" 
+      data-lenis-snap
+      role="region"
+      aria-labelledby="bio-heading"
+      aria-label="About Britta Baumann"
+    >
       <BioSection />
     </div>
-    <div id="contact-container" class="min-h-screen" data-lenis-snap>
+    
+    <div 
+      id="contact-container" 
+      class="min-h-screen" 
+      data-lenis-snap
+      role="region"
+      aria-labelledby="contact-heading"
+      aria-label="Contact information"
+    >
       <ContactSection />
     </div>
-    <Footer />
+    
+    <Footer role="contentinfo" aria-label="Site footer" />
   </main>
 </template>
 
@@ -71,8 +92,13 @@ onMounted(() => {
     document.documentElement.style.setProperty('--scroll-velocity', velocity)
   })
 
- 
-
+  // Add accessibility announcement for smooth scrolling
+  const scrollAnnouncement = document.createElement('div')
+  scrollAnnouncement.setAttribute('aria-live', 'polite')
+  scrollAnnouncement.setAttribute('aria-atomic', 'true')
+  scrollAnnouncement.className = 'sr-only'
+  scrollAnnouncement.id = 'scroll-announcements'
+  document.body.appendChild(scrollAnnouncement)
 })
 
 onUnmounted(() => {
@@ -102,5 +128,41 @@ html.lenis {
 
 :root {
   --scroll-velocity: 0;
+}
+
+/* Screen reader only class for accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Focus styles for keyboard navigation */
+*:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Skip to content link */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: #3b82f6;
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  z-index: 1000;
+  transition: top 0.3s;
+}
+
+.skip-link:focus {
+  top: 6px;
 }
 </style>
