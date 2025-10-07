@@ -2,7 +2,7 @@
   <section 
     id="canvas-section"
     ref="targetRef"
-    class="h-screen overflow-hidden"
+    class="h-screen overflow-hidden fade-in-3"
   >
     <!-- Static image for small screens only -->
     <div class="block sm:hidden absolute inset-0">

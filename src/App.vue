@@ -1,4 +1,7 @@
 <template>
+  <!-- Header as separate top-level element -->
+  <Header />
+  
   <main role="main" :aria-label="textData.accessibility.aria_labels.main">
     <div 
       id="canvas-container" 
@@ -8,7 +11,6 @@
       :aria-label="textData.accessibility.aria_labels.hero"
     >
       <CanvasSection />
-      <Header />
     </div>
     
     <div 
@@ -73,7 +75,7 @@ const lenis = new Lenis({
 provideLenis(lenis)
 console.log('Lenis provided:', lenis)
 
-// Improved smooth snap implementation
+// Simplified snap implementation - no manual scroll interference
 let snapElements = []
 let isSnapping = false
 let snapTimeout = null
@@ -91,58 +93,39 @@ const findClosestSnapPoint = () => {
   let minDistance = Infinity
   
   snapElements.forEach(element => {
-    let elementTop = element.offsetTop
+    let snapTarget = element.offsetTop
     
-    // Remove parallax compensation completely for bio container
-    // if (element.id === 'bio-container') {
-    //   // No compensation - let it snap to actual container position
-    // }
+    // For bio container, snap to where the text will be visually centered
+    if (element.id === 'bio-container') {
+      // The text is positioned 30% down from top of container (transform: -30%)
+      // So we need to scroll to position that puts this 30% point at viewport center
+      snapTarget = element.offsetTop + (element.offsetHeight * 0.3) - (windowHeight / 2)
+    } else {
+      // Regular centering for other elements
+      snapTarget = element.offsetTop + (element.offsetHeight / 2) - (windowHeight / 2)
+    }
     
-    const elementCenter = elementTop + element.offsetHeight / 2
-    const distance = Math.abs(scrollCenter - elementCenter)
+    const distance = Math.abs(scrollY - snapTarget)
     
     if (distance < minDistance) {
       minDistance = distance
       closestElement = element
+      closestElement._snapTarget = snapTarget // Store the target position
     }
   })
   
   return closestElement
 }
 
-// Simplify manual scrolling detection
-let isManualScrolling = false
-let manualScrollTimeout = null
-
-// Make it available through lenis instance
-lenis.setManualScrolling = (state) => {
-  isManualScrolling = state
-  console.log('Manual scrolling:', state)
-  
-  // Clear any existing timeout
-  if (manualScrollTimeout) {
-    clearTimeout(manualScrollTimeout)
-  }
-  
-  // If starting manual scroll, disable snap for longer
-  if (state) {
-    manualScrollTimeout = setTimeout(() => {
-      isManualScrolling = false
-      console.log('Manual scrolling auto-disabled')
-    }, 6000) // 6 seconds to ensure manual scroll completes
-  }
-}
-
 const smoothSnapTo = (element) => {
-  // Completely skip if manual scrolling
-  if (isSnapping || !element || isManualScrolling) {
-    console.log('Snap blocked - manual scrolling active')
-    return
-  }
+  if (isSnapping || !element) return
   
   isSnapping = true
   
-  lenis.scrollTo(element, {
+  // Use the calculated snap target
+  const targetPosition = element._snapTarget || element.offsetTop
+  
+  lenis.scrollTo(targetPosition, {
     duration: 2.4,
     easing: (t) => {
       return 1 - Math.pow(1 - t, 3)
@@ -177,20 +160,14 @@ onMounted(() => {
     
     clearTimeout(snapTimeout)
     
-    // Skip all snap logic if manual scrolling
-    if (isManualScrolling) {
-      return
-    }
-    
-    // Only snap if velocity is very low
+    // Simple snap logic - only when velocity is very low
     if (!isSnapping && Math.abs(velocity) < 0.02) {
       snapTimeout = setTimeout(() => {
-        // Triple check manual scrolling isn't active
-        if (!isManualScrolling && !isSnapping) {
+        if (!isSnapping) {
           const closestElement = findClosestSnapPoint()
           if (closestElement) {
             const currentY = window.scrollY
-            const targetY = closestElement.offsetTop
+            const targetY = closestElement._snapTarget || closestElement.offsetTop
             const distance = Math.abs(currentY - targetY)
             
             if (distance > window.innerHeight * 0.01) {
@@ -198,7 +175,7 @@ onMounted(() => {
             }
           }
         }
-      }, 800) // Much longer delay
+      }, 300) // Shorter delay for better responsiveness
     }
   })
 

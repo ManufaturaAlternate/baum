@@ -279,6 +279,52 @@ html.lenis {
   top: 6px;
 }
 
+/* Header z-index - ensure it's above main content */
+header {
+  z-index: 9999 !important;
+  position: fixed !important;
+}
+
+/* Footer z-index - second highest */
+footer {
+  z-index: 9998 !important;
+  position: relative;
+}
+
+/* Cursor container - highest priority, above everything */
+.cursor-container {
+  z-index: 99999 !important;
+  position: fixed !important;
+  pointer-events: none !important;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.cursor-dot,
+.cursor-mask,
+.cursor-circle {
+  z-index: 99999 !important;
+  position: absolute !important;
+}
+
+/* Main content sections - lower z-index */
+#canvas-container {
+  z-index: 1;
+  position: relative;
+}
+
+#bio-container {
+  z-index: 2;
+  position: relative;
+}
+
+#contact-container {
+  z-index: 1;
+  position: relative;
+}
+
 /* Bio content parallax wrapper */
 .bio-content {
   will-change: transform;
@@ -286,27 +332,10 @@ html.lenis {
   z-index: 1;
 }
 
-/* Header z-index - highest priority */
-header {
-  z-index: 1000;
-}
-
-/* Footer z-index - second highest */
-footer {
-  z-index: 999;
-}
-
-/* Main content sections */
-#canvas-container {
-  z-index: 1;
-}
-
-#bio-container {
-  z-index: 2;
-}
-
-#contact-container {
-  z-index: 1;
+/* Bio section sticky positioning */
+#bio-section {
+  z-index: 3;
+  position: sticky;
 }
 
 /* Ensure smooth transitions for snap elements */
@@ -389,5 +418,4 @@ footer p.group.text-left span.absolute {
 footer p.group.text-right span.absolute {
   right: 0;
   text-align: right;
-}
 }
