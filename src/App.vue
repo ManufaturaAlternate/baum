@@ -3,6 +3,7 @@
   <Header />
   
   <main role="main" :aria-label="textData.accessibility.aria_labels.main">
+    
     <div 
       id="canvas-container" 
       class="h-screen" 
@@ -13,7 +14,7 @@
       <CanvasSection />
     </div>
     
-    <div 
+    <div
       id="bio-container" 
       class="w-full min-h-screen" 
       data-lenis-snap
@@ -52,6 +53,7 @@ import Footer from './components/Footer.vue'
 import CanvasSection from './components/CanvasSection.vue'
 import BioSection from './components/BioSection.vue'
 import ContactSection from './components/ContactSection.vue'
+
 import textData from '@/data/text.json'
 
 provideHover()

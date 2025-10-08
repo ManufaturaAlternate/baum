@@ -28,9 +28,10 @@
 import { onMounted, onUnmounted, ref } from 'vue'
 import { useScroll } from '../composables/useScroll'
 
+const targetRef = ref(null) // Ensure targetRef is defined as a ref
 const glcanvas = ref(null)
 const isLoaded = ref(false)
-const { targetRef, isVisible } = useScroll(2000)
+const { isVisible } = useScroll(2000)
 let patchInstance = null
 
 const initializeCanvas = (canvas) => {
