@@ -1,4 +1,35 @@
 {
-  "devCommand": "vite"
+  "devCommand": "npm run dev",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "functions": {
+    "api/**/*.js": {
+      "maxDuration": 30
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/api/protected-assets/(.*)",
+      "destination": "/api/protected-assets/[...path]"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/api/protected-assets/(.*)",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Access-Control-Allow-Methods", 
+          "value": "GET, OPTIONS"
+        },
+        {
+          "key": "Access-Control-Allow-Headers",
+          "value": "Authorization, Content-Type, x-vercel-protection-bypass"
+        }
+      ]
+    }
+  ]
 }
-ver

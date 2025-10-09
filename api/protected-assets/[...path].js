@@ -14,7 +14,7 @@ export default async function handler(req, res) {
   } else {
     // Fallback: extract from URL
     const urlPath = req.url.replace('/api/protected-assets/', '')
-    filePath = urlPath.split('?')[0] // Remove query parameters
+    filePath = urlPath.split('?')[0]
   }
 
   if (!filePath) {
@@ -74,6 +74,41 @@ export default async function handler(req, res) {
   } catch (error) {
     console.error('Error serving protected asset:', error)
     res.status(500).json({ error: 'Internal server error' })
+  }
+}
+
+export const config = {
+  api: {
+    responseLimit: '10mb',
+  },
+}
+      '.js': 'application/javascript',
+      '.glsl': 'text/plain',
+      '.obj': 'application/octet-stream',
+      '.mp3': 'audio/mpeg',
+      '.wav': 'audio/wav'
+    }
+    
+    const contentType = contentTypes[ext] || 'application/octet-stream'
+
+    console.log('✅ Serving file:', {
+      path: normalizedPath,
+      size: stats.size,
+      contentType: contentType
+    })
+
+    // Set appropriate headers
+    res.setHeader('Content-Type', contentType)
+    res.setHeader('Cache-Control', 'private, max-age=3600')
+    res.setHeader('Content-Length', stats.size)
+
+    // Stream the file
+    const fileBuffer = fs.readFileSync(normalizedPath)
+    res.status(200).send(fileBuffer)
+
+  } catch (error) {
+    console.error('❌ Error serving protected asset:', error)
+    res.status(500).json({ error: 'Internal server error', details: error.message })
   }
 }
 
