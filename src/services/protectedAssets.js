@@ -1,132 +1,194 @@
 class ProtectedAssetService {
   constructor() {
-    this.baseUrl = '/api/protected-assets'
-    this.cache = new Map()
-    // Asset path mappings
+    // Base URL for API
+    this.baseUrl = '/api/protected-asset';
+    
+    // Cache for fetched assets
+    this.cache = new Map();
+    
+    // Asset mappings
     this.assetPaths = {
-      staticImage: '/images/canvas-static.png',
-      cablesConfig: '/cables/BaumIntro.json',
-      cablesAssets: '/cables/assets/',
-      cablesOps: '/cables/js/'
+      // Direct paths for JSON and static resources
+      staticImage: 'images/canvas-static.png',
+      cablesConfig: 'cables/BaumIntro.json',
+      
+      // Base paths for asset collections
+      cablesAssets: 'cables/assets/',
+      cablesOps: 'cables/js/'
+    };
+    
+    // Asset mapping from environment variable
+    try {
+      this.assetMap = import.meta.env.VITE_ASSET_MAP ? 
+        JSON.parse(import.meta.env.VITE_ASSET_MAP) : 
+        {
+          "baum-intro-image": "_DSF2140_Kopie_2.png",
+          "cable-detail-1": "cable_001.jpg",
+          "cable-detail-2": "cable_002.jpg"
+        };
+    } catch (e) {
+      console.error('Error parsing asset map:', e);
+      this.assetMap = {};
     }
   }
 
+  /**
+   * Fetch a protected asset and return an object URL
+   */
   async fetchProtectedAsset(assetPath) {
     if (this.cache.has(assetPath)) {
-      return this.cache.get(assetPath)
+      return this.cache.get(assetPath);
     }
 
     try {
-      const response = await fetch(`${this.baseUrl}${assetPath}`, {
-        method: 'GET',
-        signal: AbortSignal.timeout(30000)
-      })
-
+      // Build URL with query parameter
+      const url = `${this.baseUrl}?path=${encodeURIComponent(assetPath)}`;
+      const response = await fetch(url);
+      
       if (!response.ok) {
-        throw new Error(`Failed to fetch protected asset: ${response.status}`)
+        throw new Error(`Failed to fetch protected asset: ${response.status}`);
       }
 
-      const blob = await response.blob()
-      const objectUrl = URL.createObjectURL(blob)
-      this.cache.set(assetPath, objectUrl)
-      return objectUrl
+      const blob = await response.blob();
+      const objectUrl = URL.createObjectURL(blob);
+      this.cache.set(assetPath, objectUrl);
+      return objectUrl;
     } catch (error) {
-      console.error('Error fetching protected asset:', error)
-      throw error
+      console.error('Error fetching protected asset:', error);
+      throw error;
     }
   }
 
+  /**
+   * Fetch a protected JSON file
+   */
   async fetchProtectedJSON(jsonPath) {
     try {
-      const response = await fetch(`${this.baseUrl}${jsonPath}`, {
-        method: 'GET',
-        signal: AbortSignal.timeout(30000)
-      })
-
+      // Build URL with query parameter
+      const url = `${this.baseUrl}?path=${encodeURIComponent(jsonPath)}`;
+      const response = await fetch(url);
+      
       if (!response.ok) {
-        throw new Error(`Failed to fetch protected JSON: ${response.status}`)
+        throw new Error(`Failed to fetch protected JSON: ${response.status}`);
       }
 
-      return await response.json()
+      return await response.json();
     } catch (error) {
-      console.error('Error fetching protected JSON:', error)
-      throw error
+      console.error('Error fetching protected JSON:', error);
+      throw error;
     }
   }
 
+  /**
+   * Get a mapped asset by its logical name
+   */
+  async getMappedAsset(logicalName) {
+    const filename = this.assetMap[logicalName];
+    if (!filename) {
+      throw new Error(`No mapping found for asset: ${logicalName}`);
+    }
+    
+    // Determine the path based on file extension
+    const ext = filename.split('.').pop().toLowerCase();
+    let basePath;
+    
+    if (['png', 'jpg', 'jpeg', 'gif', 'webp'].includes(ext)) {
+      basePath = this.assetPaths.cablesAssets;
+    } else if (['js', 'glsl'].includes(ext)) {
+      basePath = this.assetPaths.cablesOps;
+    } else {
+      basePath = this.assetPaths.cablesAssets; // Default to assets folder
+    }
+    
+    return this.fetchProtectedAsset(`${basePath}${filename}`);
+  }
+
+  /**
+   * Get the static canvas image
+   */
   async getStaticImage() {
     try {
-      // Use consistent path reference using the stored mapping
-      return this.fetchProtectedAsset(this.assetPaths.staticImage)
+      return await this.fetchProtectedAsset(this.assetPaths.staticImage);
     } catch (error) {
-      console.error('Error loading static image:', error)
-      throw error
+      console.error('Error loading static image:', error);
+      throw error;
     }
   }
 
+  /**
+   * Get the CABLES configuration file
+   */
   async getCablesConfig() {
     try {
-      // Use consistent path reference using the stored mapping
-      const response = await fetch(`${this.baseUrl}${this.assetPaths.cablesConfig}`)
-      if (!response.ok) {
-        throw new Error(`Failed to load CABLES config: ${response.status}`)
-      }
-      
-      let text = await response.text()
-      // Clean any potential issues with the JSON
-      text = text.trim()
-      // Remove BOM if present
-      if (text.charCodeAt(0) === 0xFEFF) {
-        text = text.slice(1)
-      }
-      // Remove any trailing non-JSON content
-      const lastBrace = text.lastIndexOf('}')
-      if (lastBrace !== -1 && lastBrace < text.length - 1) {
-        text = text.substring(0, lastBrace + 1)
-      }
-      
-      return JSON.parse(text)
+      // Direct JSON fetch without mapping
+      return await this.fetchProtectedJSON(this.assetPaths.cablesConfig);
     } catch (error) {
-      console.error('Error loading CABLES config:', error)
-      throw error
+      console.error('Error loading CABLES config:', error);
+      throw error;
     }
   }
 
+  /**
+   * Get the base URL for CABLES assets
+   */
   getCablesAssetsPath() {
-    // Use consistent path reference using the stored mapping
-    return `${this.baseUrl}${this.assetPaths.cablesAssets}`
-  }
-
+    // Since we're using query parameters now, we return the full path pattern
+    return 'cables/assets/';
+}
+  /**
+   * Get the base URL for CABLES operations
+   */
   getCablesOpsPath() {
-    // Use consistent path reference using the stored mapping
-    return `${this.baseUrl}${this.assetPaths.cablesOps}`
+    return 'cables/js/';
+}
+
+  /**
+   * Get a mapped CABLES asset by logical name
+   */
+  async getCablesAsset(assetName) {
+    return this.getMappedAsset(assetName);
   }
 
-  // Helper method to get full URL for any asset type
-  getAssetUrl(assetType, filename = '') {
-    if (!this.assetPaths[assetType]) {
-      console.warn(`Unknown asset type: ${assetType}`)
-      return null
+  /**
+   * Helper to generate full URL for any asset
+   */
+  getAssetUrl(assetPath) {
+    return `${this.baseUrl}?path=${encodeURIComponent(assetPath)}`;
+  }
+
+  /**
+   * Helper to get a mapped asset URL
+   */
+  getMappedAssetUrl(logicalName) {
+    const filename = this.assetMap[logicalName];
+    if (!filename) {
+      console.warn(`No mapping found for asset: ${logicalName}`);
+      return null;
     }
-    return `${this.baseUrl}${this.assetPaths[assetType]}${filename}`
+    
+    return this.getAssetUrl(`${this.assetPaths.cablesAssets}${filename}`);
   }
 
-  // Helper method to debug path issues
-  logPathInfo(filename = '') {
-    console.log('Protected Assets Service Path Information:', {
+  /**
+   * Debug logging for paths
+   */
+  logAssetInfo() {
+    console.log('Protected Asset Service Info:', {
       baseUrl: this.baseUrl,
-      staticImagePath: `${this.baseUrl}${this.assetPaths.staticImage}`,
-      cablesConfigPath: `${this.baseUrl}${this.assetPaths.cablesConfig}`,
-      cablesAssetsPath: `${this.baseUrl}${this.assetPaths.cablesAssets}`,
-      cablesOpsPath: `${this.baseUrl}${this.assetPaths.cablesOps}`,
-      requestedFile: filename ? `${this.baseUrl}${this.assetPaths.cablesAssets}${filename}` : null
-    })
+      assetPaths: this.assetPaths,
+      assetMap: this.assetMap,
+      cacheSize: this.cache.size,
+      sampleUrl: this.getAssetUrl(this.assetPaths.staticImage)
+    });
   }
 
+  /**
+   * Clear cache to free memory
+   */
   clearCache() {
-    this.cache.forEach(url => URL.revokeObjectURL(url))
-    this.cache.clear()
+    this.cache.forEach(url => URL.revokeObjectURL(url));
+    this.cache.clear();
   }
 }
 
-export default new ProtectedAssetService()
+export default new ProtectedAssetService();

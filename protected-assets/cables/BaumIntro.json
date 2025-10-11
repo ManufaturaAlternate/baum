@@ -1,1 +1,2838 @@
-{"_id":"68be1d210d958ee2c22e3ed1","ops":[{"id":"cks0usmc2","uiAttribs":{},"portsIn":[{"name":"Max Pixel Density (DPR)","value":2},{"name":"FPS Limit","value":0},{"name":"Reduce FPS unfocussed","value":0},{"name":"Transparent","value":0},{"name":"Active","value":1},{"name":"Focus canvas","value":1}],"portsOut":[{"name":"trigger","links":[{"portIn":"exe","portOut":"trigger","objIn":"oddih1o0x","objOut":"cks0usmc2"}]},{"name":"width","value":1917.3100587129593},{"name":"height","value":1486.7600455284119},{"name":"Pixel Density","value":1.090000033378601}],"objName":"Ops.Gl.MainLoop_v2"},{"id":"7pj1nzm1h","uiAttribs":{},"portsIn":[{"name":"amount","value":0},{"name":"direction index","value":0},{"name":"direction","value":"both"},{"name":"Fast","value":1}],"portsOut":[{"name":"trigger","links":[{"portIn":"render","portOut":"trigger","objIn":"wrz6wjwa9","objOut":"7pj1nzm1h"}]}],"objName":"Ops.Gl.ImageCompose.Blur"},{"id":"y0nrtbr98","uiAttribs":{},"portsIn":[{"name":"Invert","value":0},{"name":"Black White","value":0},{"name":"Remove Alpha","value":0},{"name":"Remap","value":1}],"portsOut":[{"name":"trigger","links":[{"portIn":"render","portOut":"trigger","objIn":"7pj1nzm1h","objOut":"y0nrtbr98"}]}],"objName":"Ops.Gl.ImageCompose.LumaKey_v3"},{"id":"egpfhbn04","uiAttribs":{},"portsIn":[{"name":"Size index","value":0},{"name":"Size","value":"Auto"},{"name":"Width","value":640},{"name":"Height","value":480},{"name":"Filter index","value":1},{"name":"Filter","value":"linear"},{"name":"Wrap index","value":1},{"name":"Wrap","value":"repeat"},{"name":"Anisotropic index","value":0},{"name":"Anisotropic","value":"0"},{"name":"Pixel Format index","value":9},{"name":"Pixel Format","value":"RGBA 16bit float"},{"name":"Clear","value":1},{"name":"R","value":0},{"name":"G","value":0},{"name":"B","value":0},{"name":"A","value":0}],"portsOut":[{"name":"Next","links":[{"portIn":"render","portOut":"Next","objIn":"dp8a5hgk3","objOut":"egpfhbn04"}]},{"name":"texture_out","links":[{"portIn":"Image","portOut":"texture_out","objIn":"qxpzlw9oy","objOut":"egpfhbn04"}]},{"name":"Aspect Ratio","value":1.2900403768506057},{"name":"Texture Width","value":1917},{"name":"Texture Height","value":1486}],"objName":"Ops.Gl.ImageCompose.ImageCompose_v4"},{"id":"dp8a5hgk3","uiAttribs":{},"portsIn":[{"name":"blendMode index","value":6},{"name":"blendMode","value":"add"},{"name":"amount","value":0.588},{"name":"Premultiplied","value":0},{"name":"Alpha Mask","value":0},{"name":"removeAlphaSrc","value":0},{"name":"Mask Src index","value":1},{"name":"Mask Src","value":"luminance"},{"name":"Invert alpha channel","value":1},{"name":"Aspect Ratio","value":0},{"name":"Stretch Axis index","value":0},{"name":"Stretch Axis","value":"X"},{"name":"Position","value":0},{"name":"Crop","value":0},{"name":"flip x","value":0},{"name":"flip y","value":0},{"name":"Transform","value":0},{"name":"Scale X","value":1},{"name":"Scale Y","value":1},{"name":"Position X","value":0},{"name":"Position Y","value":0},{"name":"Rotation","value":0},{"name":"Clip Repeat","value":0}],"portsOut":[{"name":"trigger","links":[{"portIn":"render","portOut":"trigger","objIn":"y0nrtbr98","objOut":"dp8a5hgk3"}]}],"objName":"Ops.Gl.ImageCompose.DrawImage_v3"},{"id":"qxpzlw9oy","uiAttribs":{},"portsIn":[{"name":"blendMode index","value":0},{"name":"blendMode","value":"normal"},{"name":"amount","value":1},{"name":"Premultiplied","value":1},{"name":"Alpha Mask","value":0},{"name":"removeAlphaSrc","value":0},{"name":"Mask Src index","value":1},{"name":"Mask Src","value":"luminance"},{"name":"Invert alpha channel","value":0},{"name":"Aspect Ratio","value":0},{"name":"Stretch Axis index","value":0},{"name":"Stretch Axis","value":"X"},{"name":"Position","value":0},{"name":"Crop","value":0},{"name":"flip x","value":0},{"name":"flip y","value":0},{"name":"Transform","value":0},{"name":"Scale X","value":1},{"name":"Scale Y","value":1},{"name":"Position X","value":0},{"name":"Position Y","value":0},{"name":"Rotation","value":0},{"name":"Clip Repeat","value":0}],"portsOut":[{"name":"trigger","links":[{"portIn":"render","portOut":"trigger","objIn":"85wef35cw","objOut":"qxpzlw9oy"}]}],"objName":"Ops.Gl.ImageCompose.DrawImage_v3"},{"id":"7znrx9nux","uiAttribs":{},"portsIn":[{"name":"Size index","value":2},{"name":"Size","value":"Manual"},{"name":"Width","value":1015},{"name":"Height","value":822},{"name":"Filter index","value":1},{"name":"Filter","value":"linear"},{"name":"Wrap index","value":2},{"name":"Wrap","value":"mirrored repeat"},{"name":"Anisotropic index","value":0},{"name":"Anisotropic","value":"0"},{"name":"Pixel Format index","value":4},{"name":"Pixel Format","value":"RGBA 8bit ubyte"},{"name":"Clear","value":1},{"name":"R","value":0},{"name":"G","value":0},{"name":"B","value":0},{"name":"A","value":0}],"portsOut":[{"name":"Next","links":[{"portIn":"render","portOut":"Next","objIn":"qxpzlw9oy","objOut":"7znrx9nux"}]},{"name":"texture_out","links":[{"portIn":"Image","portOut":"texture_out","objIn":"lvhqc8omy","objOut":"7znrx9nux"}]},{"name":"Aspect Ratio","value":1.2347931873479319},{"name":"Texture Width","value":1015},{"name":"Texture Height","value":822}],"objName":"Ops.Gl.ImageCompose.ImageCompose_v4"},{"id":"oddih1o0x","uiAttribs":{},"portsOut":[{"name":"trigger 0","links":[{"portIn":"Render","portOut":"trigger 0","objIn":"egpfhbn04","objOut":"oddih1o0x"}]},{"name":"trigger 1","links":[{"portIn":"Render","portOut":"trigger 1","objIn":"uv3gjd5eb","objOut":"oddih1o0x"}]},{"name":"trigger 2","links":[{"portIn":"Render","portOut":"trigger 2","objIn":"zr37jb707","objOut":"oddih1o0x"}]},{"name":"trigger 4","links":[{"portIn":"Render","portOut":"trigger 4","objIn":"epdeq09k8","objOut":"oddih1o0x"}]},{"name":"trigger 5","links":[{"portIn":"Render","portOut":"trigger 5","objIn":"ytn9ypchq","objOut":"oddih1o0x"}]},{"name":"trigger 9","links":[{"portIn":"Render","portOut":"trigger 9","objIn":"7znrx9nux","objOut":"oddih1o0x"}]},{"name":"trigger 12","links":[{"portIn":"Render","portOut":"trigger 12","objIn":"gslh4tx25","objOut":"oddih1o0x"}]},{"name":"trigger 14","links":[{"portIn":"Render","portOut":"trigger 14","objIn":"e7ynf0hus","objOut":"oddih1o0x"}]},{"name":"trigger 15","links":[{"portIn":"render","portOut":"trigger 15","objIn":"jj28n9hhl","objOut":"oddih1o0x"}]}],"objName":"Ops.Trigger.Sequence"},{"id":"o0ug2keoi","uiAttribs":{},"portsIn":[{"name":"amount","value":3.57},{"name":"direction index","value":0},{"name":"direction","value":"both"},{"name":"Fast","value":1}],"portsOut":[{"name":"trigger","links":[{"portIn":"render","portOut":"trigger","objIn":"l2jae93pf","objOut":"o0ug2keoi"}]}],"objName":"Ops.Gl.ImageCompose.Blur"},{"id":"lnpwqlziv","uiAttribs":{},"portsIn":[{"name":"Invert","value":0},{"name":"Black White","value":0},{"name":"Remove Alpha","value":0},{"name":"Remap","value":1},{"name":"Threshold low ","value":0.42},{"name":"Threshold high","value":0.603}],"portsOut":[{"name":"trigger","links":[{"portIn":"render","portOut":"trigger","objIn":"o0ug2keoi","objOut":"lnpwqlziv"}]}],"objName":"Ops.Gl.ImageCompose.LumaKey_v3"},{"id":"zr37jb707","uiAttribs":{},"portsIn":[{"name":"Size index","value":0},{"name":"Size","value":"Auto"},{"name":"Width","value":640},{"name":"Height","value":480},{"name":"Filter index","value":1},{"name":"Filter","value":"linear"},{"name":"Wrap index","value":1},{"name":"Wrap","value":"repeat"},{"name":"Anisotropic index","value":0},{"name":"Anisotropic","value":"0"},{"name":"Pixel Format index","value":5},{"name":"Pixel Format","value":"SRGBA 8bit ubyte"},{"name":"Clear","value":1},{"name":"R","value":0},{"name":"G","value":0},{"name":"B","value":0},{"name":"A","value":0}],"portsOut":[{"name":"Next","links":[{"portIn":"render","portOut":"Next","objIn":"0rhhni4m1","objOut":"zr37jb707"}]},{"name":"texture_out","links":[{"portIn":"Image","portOut":"texture_out","objIn":"85wef35cw","objOut":"zr37jb707"},{"portIn":"Image","portOut":"texture_out","objIn":"oc5yt4x12","objOut":"zr37jb707"}]},{"name":"Aspect Ratio","value":1.2900403768506057},{"name":"Texture Width","value":1917},{"name":"Texture Height","value":1486}],"objName":"Ops.Gl.ImageCompose.ImageCompose_v4"},{"id":"0rhhni4m1","uiAttribs":{},"portsIn":[{"name":"blendMode index","value":0},{"name":"blendMode","value":"normal"},{"name":"amount","value":0.907},{"name":"Premultiplied","value":0},{"name":"Alpha Mask","value":0},{"name":"removeAlphaSrc","value":0},{"name":"Mask Src index","value":1},{"name":"Mask Src","value":"luminance"},{"name":"Invert alpha channel","value":1},{"name":"Aspect Ratio","value":0},{"name":"Stretch Axis index","value":0},{"name":"Stretch Axis","value":"X"},{"name":"Position","value":0},{"name":"Crop","value":0},{"name":"flip x","value":0},{"name":"flip y","value":0},{"name":"Transform","value":0},{"name":"Scale X","value":1},{"name":"Scale Y","value":1},{"name":"Position X","value":0},{"name":"Position Y","value":0},{"name":"Rotation","value":0},{"name":"Clip Repeat","value":0}],"portsOut":[{"name":"trigger","links":[{"portIn":"render","portOut":"trigger","objIn":"lnpwqlziv","objOut":"0rhhni4m1"}]}],"objName":"Ops.Gl.ImageCompose.DrawImage_v3"},{"id":"85wef35cw","uiAttribs":{},"portsIn":[{"name":"blendMode index","value":6},{"name":"blendMode","value":"add"},{"name":"amount","value":1},{"name":"Premultiplied","value":1},{"name":"Alpha Mask","value":0},{"name":"removeAlphaSrc","value":0},{"name":"Mask Src index","value":1},{"name":"Mask Src","value":"luminance"},{"name":"Invert alpha channel","value":0},{"name":"Aspect Ratio","value":0},{"name":"Stretch Axis index","value":0},{"name":"Stretch Axis","value":"X"},{"name":"Position","value":0},{"name":"Crop","value":0},{"name":"flip x","value":0},{"name":"flip y","value":0},{"name":"Transform","value":0},{"name":"Scale X","value":1},{"name":"Scale Y","value":1},{"name":"Position X","value":0},{"name":"Position Y","value":0},{"name":"Rotation","value":0},{"name":"Clip Repeat","value":0}],"portsOut":[{"name":"trigger","links":[{"portIn":"render","portOut":"trigger","objIn":"oc5yt4x12","objOut":"85wef35cw"}]}],"objName":"Ops.Gl.ImageCompose.DrawImage_v3"},{"id":"lvhqc8omy","uiAttribs":{},"portsIn":[{"name":"blendMode index","value":0},{"name":"blendMode","value":"normal"},{"name":"amount","value":1},{"name":"Premultiplied","value":0},{"name":"Alpha Mask","value":0},{"name":"removeAlphaSrc","value":0},{"name":"Mask Src index","value":1},{"name":"Mask Src","value":"luminance"},{"name":"Invert alpha channel","value":0},{"name":"Aspect Ratio","value":0},{"name":"Stretch Axis index","value":0},{"name":"Stretch Axis","value":"X"},{"name":"Position","value":0},{"name":"Crop","value":0},{"name":"flip x","value":0},{"name":"flip y","value":0},{"name":"Transform","value":0},{"name":"Scale X","value":1},{"name":"Scale Y","value":1},{"name":"Position X","value":0},{"name":"Position Y","value":0},{"name":"Rotation","value":0},{"name":"Clip Repeat","value":0}],"objName":"Ops.Gl.ImageCompose.DrawImage_v3"},{"id":"gslh4tx25","uiAttribs":{},"portsIn":[{"name":"Size index","value":2},{"name":"Size","value":"Manual"},{"name":"Width","value":988},{"name":"Height","value":823},{"name":"Filter index","value":1},{"name":"Filter","value":"linear"},{"name":"Wrap index","value":2},{"name":"Wrap","value":"mirrored repeat"},{"name":"Anisotropic index","value":0},{"name":"Anisotropic","value":"0"},{"name":"Pixel Format index","value":9},{"name":"Pixel Format","value":"RGBA 16bit float"},{"name":"Clear","value":1},{"name":"R","value":0},{"name":"G","value":0},{"name":"B","value":0},{"name":"A","value":0}],"portsOut":[{"name":"Next","links":[{"portIn":"render","portOut":"Next","objIn":"ehbsrly61","objOut":"gslh4tx25"}]},{"name":"texture_out","links":[{"portIn":"Image","portOut":"texture_out","objIn":"iosqeuvrw","objOut":"gslh4tx25"}]},{"name":"Aspect Ratio","value":1.2004860267314703},{"name":"Texture Width","value":988},{"name":"Texture Height","value":823}],"objName":"Ops.Gl.ImageCompose.ImageCompose_v4"},{"id":"ehbsrly61","uiAttribs":{},"portsIn":[{"name":"posX","value":0},{"name":"posY","value":0},{"name":"posZ","value":0},{"name":"scale","value":0.42},{"name":"rotX","value":0},{"name":"rotY","value":0},{"name":"rotZ","value":0}],"portsOut":[{"name":"trigger","links":[{"portIn":"render","portOut":"trigger","objIn":"lvhqc8omy","objOut":"ehbsrly61"}]}],"objName":"Ops.Graphics.Transform"},{"id":"jj28n9hhl","uiAttribs":{},"portsIn":[{"name":"Scale index","value":1},{"name":"Scale","value":"Fit"},{"name":"Flip Y","value":0},{"name":"Flip X","value":0}],"objName":"Ops.Gl.Meshes.FullscreenRectangle_v2"},{"id":"iosqeuvrw","uiAttribs":{},"portsIn":[{"name":"blendMode index","value":2},{"name":"blendMode","value":"darken"},{"name":"amount","value":1},{"name":"Premultiplied","value":0},{"name":"Alpha Mask","value":0},{"name":"removeAlphaSrc","value":0},{"name":"Mask Src index","value":1},{"name":"Mask Src","value":"luminance"},{"name":"Invert alpha channel","value":0},{"name":"Aspect Ratio","value":0},{"name":"Stretch Axis index","value":0},{"name":"Stretch Axis","value":"X"},{"name":"Position","value":0},{"name":"Crop","value":0},{"name":"flip x","value":0},{"name":"flip y","value":0},{"name":"Transform","value":0},{"name":"Scale X","value":1},{"name":"Scale Y","value":1},{"name":"Position X","value":0},{"name":"Position Y","value":0},{"name":"Rotation","value":0},{"name":"Clip Repeat","value":0}],"portsOut":[{"name":"trigger","links":[{"portIn":"render","portOut":"trigger","objIn":"bdr7v4a7u","objOut":"iosqeuvrw"}]}],"objName":"Ops.Gl.ImageCompose.DrawImage_v3"},{"id":"e7ynf0hus","uiAttribs":{},"portsIn":[{"name":"Size index","value":2},{"name":"Size","value":"Manual"},{"name":"Width","value":1187},{"name":"Height","value":1730},{"name":"Filter index","value":1},{"name":"Filter","value":"linear"},{"name":"Wrap index","value":1},{"name":"Wrap","value":"repeat"},{"name":"Anisotropic index","value":5},{"name":"Anisotropic","value":"16"},{"name":"Pixel Format index","value":6},{"name":"Pixel Format","value":"RGB 11/11/10bit float"},{"name":"Clear","value":1},{"name":"R","value":1},{"name":"G","value":1},{"name":"B","value":1},{"name":"A","value":0}],"portsOut":[{"name":"Next","links":[{"portIn":"render","portOut":"Next","objIn":"kgpfd45ba","objOut":"e7ynf0hus"}]},{"name":"texture_out","links":[{"portIn":"Texture","portOut":"texture_out","objIn":"jj28n9hhl","objOut":"e7ynf0hus"}]},{"name":"Aspect Ratio","value":0.6861271676300578},{"name":"Texture Width","value":1187},{"name":"Texture Height","value":1730}],"objName":"Ops.Gl.ImageCompose.ImageCompose_v4"},{"id":"bdr7v4a7u","uiAttribs":{},"portsIn":[{"name":"contrast","value":1},{"name":"brightness","value":0.316}],"portsOut":[{"name":"trigger","links":[{"portIn":"Render","portOut":"trigger","objIn":"y1ji0g7se","objOut":"bdr7v4a7u"}]}],"objName":"Ops.Gl.ImageCompose.BrightnessContrast"},{"id":"y1ji0g7se","uiAttribs":{},"portsIn":[{"name":"amount","value":-0.26}],"portsOut":[{"name":"Trigger","links":[{"portIn":"Render","portOut":"Trigger","objIn":"thklkqp9c","objOut":"y1ji0g7se"}]}],"objName":"Ops.Gl.ImageCompose.Clarity"},{"id":"ar69bch1m","uiAttribs":{},"portsIn":[{"name":"blendMode index","value":0},{"name":"blendMode","value":"normal"},{"name":"amount","value":1},{"name":"Premultiplied","value":0},{"name":"Alpha Mask","value":0},{"name":"removeAlphaSrc","value":0},{"name":"Mask Src index","value":1},{"name":"Mask Src","value":"luminance"},{"name":"Invert alpha channel","value":0},{"name":"Aspect Ratio","value":0},{"name":"Stretch Axis index","value":0},{"name":"Stretch Axis","value":"X"},{"name":"Position","value":0},{"name":"Crop","value":0},{"name":"flip x","value":0},{"name":"flip y","value":0},{"name":"Transform","value":0},{"name":"Scale X","value":1},{"name":"Scale Y","value":1},{"name":"Position X","value":0},{"name":"Position Y","value":0},{"name":"Rotation","value":0},{"name":"Clip Repeat","value":0}],"objName":"Ops.Gl.ImageCompose.DrawImage_v3"},{"id":"uv3gjd5eb","uiAttribs":{},"portsIn":[{"name":"Size index","value":0},{"name":"Size","value":"Auto"},{"name":"Width","value":640},{"name":"Height","value":480},{"name":"Filter index","value":1},{"name":"Filter","value":"linear"},{"name":"Wrap index","value":1},{"name":"Wrap","value":"repeat"},{"name":"Anisotropic index","value":0},{"name":"Anisotropic","value":"0"},{"name":"Pixel Format index","value":4},{"name":"Pixel Format","value":"RGBA 8bit ubyte"},{"name":"Clear","value":1},{"name":"R","value":0},{"name":"G","value":0},{"name":"B","value":0},{"name":"A","value":0}],"portsOut":[{"name":"Next","links":[{"portIn":"render","portOut":"Next","objIn":"ar69bch1m","objOut":"uv3gjd5eb"}]},{"name":"texture_out","links":[{"portIn":"mask","portOut":"texture_out","objIn":"o0ug2keoi","objOut":"uv3gjd5eb"}]},{"name":"Aspect Ratio","value":1.2900403768506057},{"name":"Texture Width","value":1917},{"name":"Texture Height","value":1486}],"objName":"Ops.Gl.ImageCompose.ImageCompose_v4"},{"id":"0ewv4rjm8","uiAttribs":{},"portsIn":[{"name":"Coordinates index","value":0},{"name":"Coordinates","value":"-1 to 1"},{"name":"Area index","value":0},{"name":"Area","value":"Canvas Area"},{"name":"flip y","value":1},{"name":"right click prevent default","value":1},{"name":"Events index","value":0},{"name":"Events","value":"Pointer"},{"name":"Passive Events","value":0},{"name":"Active","value":1}],"portsOut":[{"name":"x","links":[{"portIn":"Pos X","portOut":"x","objIn":"04kuzs6ao","objOut":"0ewv4rjm8"},{"portIn":"Pos X","portOut":"x","objIn":"szvhq8z3m","objOut":"0ewv4rjm8"},{"portIn":"value","portOut":"x","objIn":"qmn0pygzw","objOut":"0ewv4rjm8"}]},{"name":"y","links":[{"portIn":"Pos Y","portOut":"y","objIn":"04kuzs6ao","objOut":"0ewv4rjm8"},{"portIn":"Pos Y","portOut":"y","objIn":"szvhq8z3m","objOut":"0ewv4rjm8"}]},{"name":"Button is down","value":0},{"name":"Mouse is hovering","value":0},{"name":"Movement X","value":-98.16513460861022},{"name":"Movement Y","value":-43.11926473462318}],"objName":"Ops.Devices.Mouse.Mouse_v4"},{"id":"oc5yt4x12","uiAttribs":{},"portsIn":[{"name":"blendMode index","value":6},{"name":"blendMode","value":"add"},{"name":"amount","value":0.647},{"name":"Premultiplied","value":1},{"name":"Alpha Mask","value":0},{"name":"removeAlphaSrc","value":0},{"name":"Mask Src index","value":1},{"name":"Mask Src","value":"luminance"},{"name":"Invert alpha channel","value":0},{"name":"Aspect Ratio","value":0},{"name":"Stretch Axis index","value":0},{"name":"Stretch Axis","value":"X"},{"name":"Position","value":0},{"name":"Crop","value":0},{"name":"flip x","value":0},{"name":"flip y","value":0},{"name":"Transform","value":0},{"name":"Scale X","value":1},{"name":"Scale Y","value":1},{"name":"Position X","value":0},{"name":"Position Y","value":0},{"name":"Rotation","value":0},{"name":"Clip Repeat","value":0}],"objName":"Ops.Gl.ImageCompose.DrawImage_v3"},{"id":"kgpfd45ba","uiAttribs":{},"portsIn":[{"name":"r","value":0.9425612513224284},{"name":"g","value":0.9425612513224284},{"name":"b","value":0.9425612513224284},{"name":"a","value":1}],"portsOut":[{"name":"trigger","links":[{"portIn":"render","portOut":"trigger","objIn":"iosqeuvrw","objOut":"kgpfd45ba"}]}],"objName":"Ops.Gl.ClearColor"},{"id":"04kuzs6ao","uiAttribs":{},"portsIn":[{"name":"Amount","value":1},{"name":"Blend Mode index","value":0},{"name":"Blend Mode","value":"normal"},{"name":"Alpha Mask index","value":0},{"name":"Alpha Mask","value":"Off"},{"name":"Size","value":1},{"name":"Inner","value":0},{"name":"Stretch X","value":0},{"name":"Stretch Y","value":0},{"name":"fallOff index","value":1},{"name":"fallOff","value":"SmoothStep"},{"name":"fade Out","value":0.758},{"name":"warn overflow","value":1},{"name":"r","value":1},{"name":"g","value":1},{"name":"b","value":1},{"name":"a","value":1}],"objName":"Ops.Gl.ImageCompose.CircleTexture_v4"},{"id":"ytn9ypchq","uiAttribs":{},"portsIn":[{"name":"Size index","value":0},{"name":"Size","value":"Auto"},{"name":"Width","value":640},{"name":"Height","value":480},{"name":"Filter index","value":2},{"name":"Filter","value":"mipmap"},{"name":"Wrap index","value":1},{"name":"Wrap","value":"repeat"},{"name":"Anisotropic index","value":0},{"name":"Anisotropic","value":"0"},{"name":"Pixel Format index","value":4},{"name":"Pixel Format","value":"RGBA 8bit ubyte"},{"name":"Clear","value":1},{"name":"R","value":0},{"name":"G","value":0},{"name":"B","value":0},{"name":"A","value":0}],"portsOut":[{"name":"Next","links":[{"portIn":"Render","portOut":"Next","objIn":"04kuzs6ao","objOut":"ytn9ypchq"}]},{"name":"Aspect Ratio","value":1.2900403768506057},{"name":"Texture Width","value":1917},{"name":"Texture Height","value":1486}],"objName":"Ops.Gl.ImageCompose.ImageCompose_v4"},{"id":"epdeq09k8","uiAttribs":{},"portsIn":[{"name":"Size index","value":0},{"name":"Size","value":"Auto"},{"name":"Width","value":640},{"name":"Height","value":480},{"name":"Filter index","value":1},{"name":"Filter","value":"linear"},{"name":"Wrap index","value":1},{"name":"Wrap","value":"repeat"},{"name":"Anisotropic index","value":0},{"name":"Anisotropic","value":"0"},{"name":"Pixel Format index","value":4},{"name":"Pixel Format","value":"RGBA 8bit ubyte"},{"name":"Clear","value":1},{"name":"R","value":0},{"name":"G","value":0},{"name":"B","value":0},{"name":"A","value":0}],"portsOut":[{"name":"Next","links":[{"portIn":"Render","portOut":"Next","objIn":"szvhq8z3m","objOut":"epdeq09k8"}]},{"name":"texture_out","links":[{"portIn":"Mask","portOut":"texture_out","objIn":"oc5yt4x12","objOut":"epdeq09k8"},{"portIn":"Mask","portOut":"texture_out","objIn":"85wef35cw","objOut":"epdeq09k8"}]},{"name":"Aspect Ratio","value":1.2900403768506057},{"name":"Texture Width","value":1917},{"name":"Texture Height","value":1486}],"objName":"Ops.Gl.ImageCompose.ImageCompose_v4"},{"id":"szvhq8z3m","uiAttribs":{},"portsIn":[{"name":"Amount","value":1},{"name":"Blend Mode index","value":0},{"name":"Blend Mode","value":"normal"},{"name":"Alpha Mask index","value":0},{"name":"Alpha Mask","value":"Off"},{"name":"Size","value":0.694},{"name":"Inner","value":0},{"name":"Stretch X","value":0},{"name":"Stretch Y","value":0},{"name":"fallOff index","value":1},{"name":"fallOff","value":"SmoothStep"},{"name":"fade Out","value":0.733},{"name":"warn overflow","value":0},{"name":"r","value":1},{"name":"g","value":1},{"name":"b","value":1},{"name":"a","value":1}],"objName":"Ops.Gl.ImageCompose.CircleTexture_v4"},{"id":"l2jae93pf","uiAttribs":{},"portsIn":[{"name":"Invert","value":0},{"name":"Black White","value":0},{"name":"Remove Alpha","value":0},{"name":"Remap","value":1},{"name":"Threshold low ","value":0.354},{"name":"Threshold high","value":0.9}],"objName":"Ops.Gl.ImageCompose.LumaKey_v3"},{"id":"qmn0pygzw","uiAttribs":{},"portsOut":[{"name":"result","links":[{"portIn":"value","portOut":"result","objIn":"oq6t2k99v","objOut":"qmn0pygzw"},{"portIn":"value","portOut":"result","objIn":"62m8scd2g","objOut":"qmn0pygzw"}]}],"objName":"Ops.Number.Number"},{"id":"oq6t2k99v","uiAttribs":{},"portsIn":[{"name":"old min","value":-1},{"name":"old max","value":1},{"name":"new min","value":0.023},{"name":"new max","value":0.284},{"name":"Easing index","value":0},{"name":"Easing","value":"Linear"},{"name":"Clamp","value":1}],"portsOut":[{"name":"result","links":[{"portIn":"Threshold low ","portOut":"result","objIn":"y0nrtbr98","objOut":"oq6t2k99v"}]}],"objName":"Ops.Math.MapRange"},{"id":"62m8scd2g","uiAttribs":{},"portsIn":[{"name":"old min","value":-1},{"name":"old max","value":1},{"name":"new min","value":0.388},{"name":"new max","value":0.907},{"name":"Easing index","value":0},{"name":"Easing","value":"Linear"},{"name":"Clamp","value":1}],"portsOut":[{"name":"result","links":[{"portIn":"Threshold high","portOut":"result","objIn":"y0nrtbr98","objOut":"62m8scd2g"}]}],"objName":"Ops.Math.MapRange"},{"id":"aa7tvem0f","uiAttribs":{},"portsIn":[{"name":"File","value":"/api/protected-assets/cables/assets/_DSF2140_Kopie_2.png","display":"file"},{"name":"Filter index","value":1},{"name":"Filter","value":"linear"},{"name":"Wrap index","value":0},{"name":"Wrap","value":"repeat"},{"name":"Anisotropic index","value":0},{"name":"Anisotropic","value":"0"},{"name":"Data Format index","value":3},{"name":"Data Format","value":"RGBA"},{"name":"Flip","value":0},{"name":"Pre Multiplied Alpha","value":0},{"name":"Active","value":1},{"name":"Save Memory","value":1},{"name":"Add Cachebuster","value":0}],"portsOut":[{"name":"Texture","links":[{"portIn":"Image","portOut":"Texture","objIn":"dp8a5hgk3","objOut":"aa7tvem0f"},{"portIn":"Image","portOut":"Texture","objIn":"ar69bch1m","objOut":"aa7tvem0f"},{"portIn":"Image","portOut":"Texture","objIn":"0rhhni4m1","objOut":"aa7tvem0f"}]},{"name":"Width","value":1181},{"name":"Height","value":1772},{"name":"Aspect Ratio","value":0.6664785553047404},{"name":"Loaded","value":1},{"name":"Loading","value":0}],"objName":"Ops.Gl.Texture_v2"},{"id":"wrz6wjwa9","uiAttribs":{},"portsIn":[{"name":"span index","value":5},{"name":"span","value":"32"},{"name":"reduceMin","value":128},{"name":"reduceMul","value":8},{"name":"use viewport size","value":1},{"name":"width","value":0},{"name":"height","value":0}],"objName":"Ops.Gl.ImageCompose.FXAA"},{"id":"6xc41ho0f","uiAttribs":{},"portsIn":[{"name":"span index","value":4},{"name":"span","value":"16"},{"name":"reduceMin","value":141.56},{"name":"reduceMul","value":52.83},{"name":"use viewport size","value":1},{"name":"width","value":0},{"name":"height","value":0}],"objName":"Ops.Gl.ImageCompose.FXAA"},{"id":"thklkqp9c","uiAttribs":{},"portsIn":[{"name":"amount","value":0.171}],"portsOut":[{"name":"Trigger","links":[{"portIn":"render","portOut":"Trigger","objIn":"6xc41ho0f","objOut":"thklkqp9c"}]}],"objName":"Ops.Gl.ImageCompose.Sharpen"}],"export":{"time":"2025-09-09 18:30","service":"html","exportNumber":7}}
+{
+    "_id": "68be1d210d958ee2c22e3ed1",
+    "ops": [
+        {
+            "id": "cks0usmc2",
+            "uiAttribs": {},
+            "portsIn": [
+                {
+                    "name": "Max Pixel Density (DPR)",
+                    "value": 2
+                },
+                {
+                    "name": "FPS Limit",
+                    "value": 0
+                },
+                {
+                    "name": "Reduce FPS unfocussed",
+                    "value": 0
+                },
+                {
+                    "name": "Transparent",
+                    "value": 0
+                },
+                {
+                    "name": "Active",
+                    "value": 1
+                },
+                {
+                    "name": "Focus canvas",
+                    "value": 1
+                }
+            ],
+            "portsOut": [
+                {
+                    "name": "trigger",
+                    "links": [
+                        {
+                            "portIn": "exe",
+                            "portOut": "trigger",
+                            "objIn": "oddih1o0x",
+                            "objOut": "cks0usmc2"
+                        }
+                    ]
+                },
+                {
+                    "name": "width",
+                    "value": 1917.3100587129593
+                },
+                {
+                    "name": "height",
+                    "value": 1486.7600455284119
+                },
+                {
+                    "name": "Pixel Density",
+                    "value": 1.090000033378601
+                }
+            ],
+            "objName": "Ops.Gl.MainLoop_v2"
+        },
+        {
+            "id": "7pj1nzm1h",
+            "uiAttribs": {},
+            "portsIn": [
+                {
+                    "name": "amount",
+                    "value": 0
+                },
+                {
+                    "name": "direction index",
+                    "value": 0
+                },
+                {
+                    "name": "direction",
+                    "value": "both"
+                },
+                {
+                    "name": "Fast",
+                    "value": 1
+                }
+            ],
+            "portsOut": [
+                {
+                    "name": "trigger",
+                    "links": [
+                        {
+                            "portIn": "render",
+                            "portOut": "trigger",
+                            "objIn": "wrz6wjwa9",
+                            "objOut": "7pj1nzm1h"
+                        }
+                    ]
+                }
+            ],
+            "objName": "Ops.Gl.ImageCompose.Blur"
+        },
+        {
+            "id": "y0nrtbr98",
+            "uiAttribs": {},
+            "portsIn": [
+                {
+                    "name": "Invert",
+                    "value": 0
+                },
+                {
+                    "name": "Black White",
+                    "value": 0
+                },
+                {
+                    "name": "Remove Alpha",
+                    "value": 0
+                },
+                {
+                    "name": "Remap",
+                    "value": 1
+                }
+            ],
+            "portsOut": [
+                {
+                    "name": "trigger",
+                    "links": [
+                        {
+                            "portIn": "render",
+                            "portOut": "trigger",
+                            "objIn": "7pj1nzm1h",
+                            "objOut": "y0nrtbr98"
+                        }
+                    ]
+                }
+            ],
+            "objName": "Ops.Gl.ImageCompose.LumaKey_v3"
+        },
+        {
+            "id": "egpfhbn04",
+            "uiAttribs": {},
+            "portsIn": [
+                {
+                    "name": "Size index",
+                    "value": 0
+                },
+                {
+                    "name": "Size",
+                    "value": "Auto"
+                },
+                {
+                    "name": "Width",
+                    "value": 640
+                },
+                {
+                    "name": "Height",
+                    "value": 480
+                },
+                {
+                    "name": "Filter index",
+                    "value": 1
+                },
+                {
+                    "name": "Filter",
+                    "value": "linear"
+                },
+                {
+                    "name": "Wrap index",
+                    "value": 1
+                },
+                {
+                    "name": "Wrap",
+                    "value": "repeat"
+                },
+                {
+                    "name": "Anisotropic index",
+                    "value": 0
+                },
+                {
+                    "name": "Anisotropic",
+                    "value": "0"
+                },
+                {
+                    "name": "Pixel Format index",
+                    "value": 9
+                },
+                {
+                    "name": "Pixel Format",
+                    "value": "RGBA 16bit float"
+                },
+                {
+                    "name": "Clear",
+                    "value": 1
+                },
+                {
+                    "name": "R",
+                    "value": 0
+                },
+                {
+                    "name": "G",
+                    "value": 0
+                },
+                {
+                    "name": "B",
+                    "value": 0
+                },
+                {
+                    "name": "A",
+                    "value": 0
+                }
+            ],
+            "portsOut": [
+                {
+                    "name": "Next",
+                    "links": [
+                        {
+                            "portIn": "render",
+                            "portOut": "Next",
+                            "objIn": "dp8a5hgk3",
+                            "objOut": "egpfhbn04"
+                        }
+                    ]
+                },
+                {
+                    "name": "texture_out",
+                    "links": [
+                        {
+                            "portIn": "Image",
+                            "portOut": "texture_out",
+                            "objIn": "qxpzlw9oy",
+                            "objOut": "egpfhbn04"
+                        }
+                    ]
+                },
+                {
+                    "name": "Aspect Ratio",
+                    "value": 1.2900403768506057
+                },
+                {
+                    "name": "Texture Width",
+                    "value": 1917
+                },
+                {
+                    "name": "Texture Height",
+                    "value": 1486
+                }
+            ],
+            "objName": "Ops.Gl.ImageCompose.ImageCompose_v4"
+        },
+        {
+            "id": "dp8a5hgk3",
+            "uiAttribs": {},
+            "portsIn": [
+                {
+                    "name": "blendMode index",
+                    "value": 6
+                },
+                {
+                    "name": "blendMode",
+                    "value": "add"
+                },
+                {
+                    "name": "amount",
+                    "value": 0.588
+                },
+                {
+                    "name": "Premultiplied",
+                    "value": 0
+                },
+                {
+                    "name": "Alpha Mask",
+                    "value": 0
+                },
+                {
+                    "name": "removeAlphaSrc",
+                    "value": 0
+                },
+                {
+                    "name": "Mask Src index",
+                    "value": 1
+                },
+                {
+                    "name": "Mask Src",
+                    "value": "luminance"
+                },
+                {
+                    "name": "Invert alpha channel",
+                    "value": 1
+                },
+                {
+                    "name": "Aspect Ratio",
+                    "value": 0
+                },
+                {
+                    "name": "Stretch Axis index",
+                    "value": 0
+                },
+                {
+                    "name": "Stretch Axis",
+                    "value": "X"
+                },
+                {
+                    "name": "Position",
+                    "value": 0
+                },
+                {
+                    "name": "Crop",
+                    "value": 0
+                },
+                {
+                    "name": "flip x",
+                    "value": 0
+                },
+                {
+                    "name": "flip y",
+                    "value": 0
+                },
+                {
+                    "name": "Transform",
+                    "value": 0
+                },
+                {
+                    "name": "Scale X",
+                    "value": 1
+                },
+                {
+                    "name": "Scale Y",
+                    "value": 1
+                },
+                {
+                    "name": "Position X",
+                    "value": 0
+                },
+                {
+                    "name": "Position Y",
+                    "value": 0
+                },
+                {
+                    "name": "Rotation",
+                    "value": 0
+                },
+                {
+                    "name": "Clip Repeat",
+                    "value": 0
+                }
+            ],
+            "portsOut": [
+                {
+                    "name": "trigger",
+                    "links": [
+                        {
+                            "portIn": "render",
+                            "portOut": "trigger",
+                            "objIn": "y0nrtbr98",
+                            "objOut": "dp8a5hgk3"
+                        }
+                    ]
+                }
+            ],
+            "objName": "Ops.Gl.ImageCompose.DrawImage_v3"
+        },
+        {
+            "id": "qxpzlw9oy",
+            "uiAttribs": {},
+            "portsIn": [
+                {
+                    "name": "blendMode index",
+                    "value": 0
+                },
+                {
+                    "name": "blendMode",
+                    "value": "normal"
+                },
+                {
+                    "name": "amount",
+                    "value": 1
+                },
+                {
+                    "name": "Premultiplied",
+                    "value": 1
+                },
+                {
+                    "name": "Alpha Mask",
+                    "value": 0
+                },
+                {
+                    "name": "removeAlphaSrc",
+                    "value": 0
+                },
+                {
+                    "name": "Mask Src index",
+                    "value": 1
+                },
+                {
+                    "name": "Mask Src",
+                    "value": "luminance"
+                },
+                {
+                    "name": "Invert alpha channel",
+                    "value": 0
+                },
+                {
+                    "name": "Aspect Ratio",
+                    "value": 0
+                },
+                {
+                    "name": "Stretch Axis index",
+                    "value": 0
+                },
+                {
+                    "name": "Stretch Axis",
+                    "value": "X"
+                },
+                {
+                    "name": "Position",
+                    "value": 0
+                },
+                {
+                    "name": "Crop",
+                    "value": 0
+                },
+                {
+                    "name": "flip x",
+                    "value": 0
+                },
+                {
+                    "name": "flip y",
+                    "value": 0
+                },
+                {
+                    "name": "Transform",
+                    "value": 0
+                },
+                {
+                    "name": "Scale X",
+                    "value": 1
+                },
+                {
+                    "name": "Scale Y",
+                    "value": 1
+                },
+                {
+                    "name": "Position X",
+                    "value": 0
+                },
+                {
+                    "name": "Position Y",
+                    "value": 0
+                },
+                {
+                    "name": "Rotation",
+                    "value": 0
+                },
+                {
+                    "name": "Clip Repeat",
+                    "value": 0
+                }
+            ],
+            "portsOut": [
+                {
+                    "name": "trigger",
+                    "links": [
+                        {
+                            "portIn": "render",
+                            "portOut": "trigger",
+                            "objIn": "85wef35cw",
+                            "objOut": "qxpzlw9oy"
+                        }
+                    ]
+                }
+            ],
+            "objName": "Ops.Gl.ImageCompose.DrawImage_v3"
+        },
+        {
+            "id": "7znrx9nux",
+            "uiAttribs": {},
+            "portsIn": [
+                {
+                    "name": "Size index",
+                    "value": 2
+                },
+                {
+                    "name": "Size",
+                    "value": "Manual"
+                },
+                {
+                    "name": "Width",
+                    "value": 1015
+                },
+                {
+                    "name": "Height",
+                    "value": 822
+                },
+                {
+                    "name": "Filter index",
+                    "value": 1
+                },
+                {
+                    "name": "Filter",
+                    "value": "linear"
+                },
+                {
+                    "name": "Wrap index",
+                    "value": 2
+                },
+                {
+                    "name": "Wrap",
+                    "value": "mirrored repeat"
+                },
+                {
+                    "name": "Anisotropic index",
+                    "value": 0
+                },
+                {
+                    "name": "Anisotropic",
+                    "value": "0"
+                },
+                {
+                    "name": "Pixel Format index",
+                    "value": 4
+                },
+                {
+                    "name": "Pixel Format",
+                    "value": "RGBA 8bit ubyte"
+                },
+                {
+                    "name": "Clear",
+                    "value": 1
+                },
+                {
+                    "name": "R",
+                    "value": 0
+                },
+                {
+                    "name": "G",
+                    "value": 0
+                },
+                {
+                    "name": "B",
+                    "value": 0
+                },
+                {
+                    "name": "A",
+                    "value": 0
+                }
+            ],
+            "portsOut": [
+                {
+                    "name": "Next",
+                    "links": [
+                        {
+                            "portIn": "render",
+                            "portOut": "Next",
+                            "objIn": "qxpzlw9oy",
+                            "objOut": "7znrx9nux"
+                        }
+                    ]
+                },
+                {
+                    "name": "texture_out",
+                    "links": [
+                        {
+                            "portIn": "Image",
+                            "portOut": "texture_out",
+                            "objIn": "lvhqc8omy",
+                            "objOut": "7znrx9nux"
+                        }
+                    ]
+                },
+                {
+                    "name": "Aspect Ratio",
+                    "value": 1.2347931873479319
+                },
+                {
+                    "name": "Texture Width",
+                    "value": 1015
+                },
+                {
+                    "name": "Texture Height",
+                    "value": 822
+                }
+            ],
+            "objName": "Ops.Gl.ImageCompose.ImageCompose_v4"
+        },
+        {
+            "id": "oddih1o0x",
+            "uiAttribs": {},
+            "portsOut": [
+                {
+                    "name": "trigger 0",
+                    "links": [
+                        {
+                            "portIn": "Render",
+                            "portOut": "trigger 0",
+                            "objIn": "egpfhbn04",
+                            "objOut": "oddih1o0x"
+                        }
+                    ]
+                },
+                {
+                    "name": "trigger 1",
+                    "links": [
+                        {
+                            "portIn": "Render",
+                            "portOut": "trigger 1",
+                            "objIn": "uv3gjd5eb",
+                            "objOut": "oddih1o0x"
+                        }
+                    ]
+                },
+                {
+                    "name": "trigger 2",
+                    "links": [
+                        {
+                            "portIn": "Render",
+                            "portOut": "trigger 2",
+                            "objIn": "zr37jb707",
+                            "objOut": "oddih1o0x"
+                        }
+                    ]
+                },
+                {
+                    "name": "trigger 4",
+                    "links": [
+                        {
+                            "portIn": "Render",
+                            "portOut": "trigger 4",
+                            "objIn": "epdeq09k8",
+                            "objOut": "oddih1o0x"
+                        }
+                    ]
+                },
+                {
+                    "name": "trigger 5",
+                    "links": [
+                        {
+                            "portIn": "Render",
+                            "portOut": "trigger 5",
+                            "objIn": "ytn9ypchq",
+                            "objOut": "oddih1o0x"
+                        }
+                    ]
+                },
+                {
+                    "name": "trigger 9",
+                    "links": [
+                        {
+                            "portIn": "Render",
+                            "portOut": "trigger 9",
+                            "objIn": "7znrx9nux",
+                            "objOut": "oddih1o0x"
+                        }
+                    ]
+                },
+                {
+                    "name": "trigger 12",
+                    "links": [
+                        {
+                            "portIn": "Render",
+                            "portOut": "trigger 12",
+                            "objIn": "gslh4tx25",
+                            "objOut": "oddih1o0x"
+                        }
+                    ]
+                },
+                {
+                    "name": "trigger 14",
+                    "links": [
+                        {
+                            "portIn": "Render",
+                            "portOut": "trigger 14",
+                            "objIn": "e7ynf0hus",
+                            "objOut": "oddih1o0x"
+                        }
+                    ]
+                },
+                {
+                    "name": "trigger 15",
+                    "links": [
+                        {
+                            "portIn": "render",
+                            "portOut": "trigger 15",
+                            "objIn": "jj28n9hhl",
+                            "objOut": "oddih1o0x"
+                        }
+                    ]
+                }
+            ],
+            "objName": "Ops.Trigger.Sequence"
+        },
+        {
+            "id": "o0ug2keoi",
+            "uiAttribs": {},
+            "portsIn": [
+                {
+                    "name": "amount",
+                    "value": 3.57
+                },
+                {
+                    "name": "direction index",
+                    "value": 0
+                },
+                {
+                    "name": "direction",
+                    "value": "both"
+                },
+                {
+                    "name": "Fast",
+                    "value": 1
+                }
+            ],
+            "portsOut": [
+                {
+                    "name": "trigger",
+                    "links": [
+                        {
+                            "portIn": "render",
+                            "portOut": "trigger",
+                            "objIn": "l2jae93pf",
+                            "objOut": "o0ug2keoi"
+                        }
+                    ]
+                }
+            ],
+            "objName": "Ops.Gl.ImageCompose.Blur"
+        },
+        {
+            "id": "lnpwqlziv",
+            "uiAttribs": {},
+            "portsIn": [
+                {
+                    "name": "Invert",
+                    "value": 0
+                },
+                {
+                    "name": "Black White",
+                    "value": 0
+                },
+                {
+                    "name": "Remove Alpha",
+                    "value": 0
+                },
+                {
+                    "name": "Remap",
+                    "value": 1
+                },
+                {
+                    "name": "Threshold low ",
+                    "value": 0.42
+                },
+                {
+                    "name": "Threshold high",
+                    "value": 0.603
+                }
+            ],
+            "portsOut": [
+                {
+                    "name": "trigger",
+                    "links": [
+                        {
+                            "portIn": "render",
+                            "portOut": "trigger",
+                            "objIn": "o0ug2keoi",
+                            "objOut": "lnpwqlziv"
+                        }
+                    ]
+                }
+            ],
+            "objName": "Ops.Gl.ImageCompose.LumaKey_v3"
+        },
+        {
+            "id": "zr37jb707",
+            "uiAttribs": {},
+            "portsIn": [
+                {
+                    "name": "Size index",
+                    "value": 0
+                },
+                {
+                    "name": "Size",
+                    "value": "Auto"
+                },
+                {
+                    "name": "Width",
+                    "value": 640
+                },
+                {
+                    "name": "Height",
+                    "value": 480
+                },
+                {
+                    "name": "Filter index",
+                    "value": 1
+                },
+                {
+                    "name": "Filter",
+                    "value": "linear"
+                },
+                {
+                    "name": "Wrap index",
+                    "value": 1
+                },
+                {
+                    "name": "Wrap",
+                    "value": "repeat"
+                },
+                {
+                    "name": "Anisotropic index",
+                    "value": 0
+                },
+                {
+                    "name": "Anisotropic",
+                    "value": "0"
+                },
+                {
+                    "name": "Pixel Format index",
+                    "value": 5
+                },
+                {
+                    "name": "Pixel Format",
+                    "value": "SRGBA 8bit ubyte"
+                },
+                {
+                    "name": "Clear",
+                    "value": 1
+                },
+                {
+                    "name": "R",
+                    "value": 0
+                },
+                {
+                    "name": "G",
+                    "value": 0
+                },
+                {
+                    "name": "B",
+                    "value": 0
+                },
+                {
+                    "name": "A",
+                    "value": 0
+                }
+            ],
+            "portsOut": [
+                {
+                    "name": "Next",
+                    "links": [
+                        {
+                            "portIn": "render",
+                            "portOut": "Next",
+                            "objIn": "0rhhni4m1",
+                            "objOut": "zr37jb707"
+                        }
+                    ]
+                },
+                {
+                    "name": "texture_out",
+                    "links": [
+                        {
+                            "portIn": "Image",
+                            "portOut": "texture_out",
+                            "objIn": "85wef35cw",
+                            "objOut": "zr37jb707"
+                        },
+                        {
+                            "portIn": "Image",
+                            "portOut": "texture_out",
+                            "objIn": "oc5yt4x12",
+                            "objOut": "zr37jb707"
+                        }
+                    ]
+                },
+                {
+                    "name": "Aspect Ratio",
+                    "value": 1.2900403768506057
+                },
+                {
+                    "name": "Texture Width",
+                    "value": 1917
+                },
+                {
+                    "name": "Texture Height",
+                    "value": 1486
+                }
+            ],
+            "objName": "Ops.Gl.ImageCompose.ImageCompose_v4"
+        },
+        {
+            "id": "0rhhni4m1",
+            "uiAttribs": {},
+            "portsIn": [
+                {
+                    "name": "blendMode index",
+                    "value": 0
+                },
+                {
+                    "name": "blendMode",
+                    "value": "normal"
+                },
+                {
+                    "name": "amount",
+                    "value": 0.907
+                },
+                {
+                    "name": "Premultiplied",
+                    "value": 0
+                },
+                {
+                    "name": "Alpha Mask",
+                    "value": 0
+                },
+                {
+                    "name": "removeAlphaSrc",
+                    "value": 0
+                },
+                {
+                    "name": "Mask Src index",
+                    "value": 1
+                },
+                {
+                    "name": "Mask Src",
+                    "value": "luminance"
+                },
+                {
+                    "name": "Invert alpha channel",
+                    "value": 1
+                },
+                {
+                    "name": "Aspect Ratio",
+                    "value": 0
+                },
+                {
+                    "name": "Stretch Axis index",
+                    "value": 0
+                },
+                {
+                    "name": "Stretch Axis",
+                    "value": "X"
+                },
+                {
+                    "name": "Position",
+                    "value": 0
+                },
+                {
+                    "name": "Crop",
+                    "value": 0
+                },
+                {
+                    "name": "flip x",
+                    "value": 0
+                },
+                {
+                    "name": "flip y",
+                    "value": 0
+                },
+                {
+                    "name": "Transform",
+                    "value": 0
+                },
+                {
+                    "name": "Scale X",
+                    "value": 1
+                },
+                {
+                    "name": "Scale Y",
+                    "value": 1
+                },
+                {
+                    "name": "Position X",
+                    "value": 0
+                },
+                {
+                    "name": "Position Y",
+                    "value": 0
+                },
+                {
+                    "name": "Rotation",
+                    "value": 0
+                },
+                {
+                    "name": "Clip Repeat",
+                    "value": 0
+                }
+            ],
+            "portsOut": [
+                {
+                    "name": "trigger",
+                    "links": [
+                        {
+                            "portIn": "render",
+                            "portOut": "trigger",
+                            "objIn": "lnpwqlziv",
+                            "objOut": "0rhhni4m1"
+                        }
+                    ]
+                }
+            ],
+            "objName": "Ops.Gl.ImageCompose.DrawImage_v3"
+        },
+        {
+            "id": "85wef35cw",
+            "uiAttribs": {},
+            "portsIn": [
+                {
+                    "name": "blendMode index",
+                    "value": 6
+                },
+                {
+                    "name": "blendMode",
+                    "value": "add"
+                },
+                {
+                    "name": "amount",
+                    "value": 1
+                },
+                {
+                    "name": "Premultiplied",
+                    "value": 1
+                },
+                {
+                    "name": "Alpha Mask",
+                    "value": 0
+                },
+                {
+                    "name": "removeAlphaSrc",
+                    "value": 0
+                },
+                {
+                    "name": "Mask Src index",
+                    "value": 1
+                },
+                {
+                    "name": "Mask Src",
+                    "value": "luminance"
+                },
+                {
+                    "name": "Invert alpha channel",
+                    "value": 0
+                },
+                {
+                    "name": "Aspect Ratio",
+                    "value": 0
+                },
+                {
+                    "name": "Stretch Axis index",
+                    "value": 0
+                },
+                {
+                    "name": "Stretch Axis",
+                    "value": "X"
+                },
+                {
+                    "name": "Position",
+                    "value": 0
+                },
+                {
+                    "name": "Crop",
+                    "value": 0
+                },
+                {
+                    "name": "flip x",
+                    "value": 0
+                },
+                {
+                    "name": "flip y",
+                    "value": 0
+                },
+                {
+                    "name": "Transform",
+                    "value": 0
+                },
+                {
+                    "name": "Scale X",
+                    "value": 1
+                },
+                {
+                    "name": "Scale Y",
+                    "value": 1
+                },
+                {
+                    "name": "Position X",
+                    "value": 0
+                },
+                {
+                    "name": "Position Y",
+                    "value": 0
+                },
+                {
+                    "name": "Rotation",
+                    "value": 0
+                },
+                {
+                    "name": "Clip Repeat",
+                    "value": 0
+                }
+            ],
+            "portsOut": [
+                {
+                    "name": "trigger",
+                    "links": [
+                        {
+                            "portIn": "render",
+                            "portOut": "trigger",
+                            "objIn": "oc5yt4x12",
+                            "objOut": "85wef35cw"
+                        }
+                    ]
+                }
+            ],
+            "objName": "Ops.Gl.ImageCompose.DrawImage_v3"
+        },
+        {
+            "id": "lvhqc8omy",
+            "uiAttribs": {},
+            "portsIn": [
+                {
+                    "name": "blendMode index",
+                    "value": 0
+                },
+                {
+                    "name": "blendMode",
+                    "value": "normal"
+                },
+                {
+                    "name": "amount",
+                    "value": 1
+                },
+                {
+                    "name": "Premultiplied",
+                    "value": 0
+                },
+                {
+                    "name": "Alpha Mask",
+                    "value": 0
+                },
+                {
+                    "name": "removeAlphaSrc",
+                    "value": 0
+                },
+                {
+                    "name": "Mask Src index",
+                    "value": 1
+                },
+                {
+                    "name": "Mask Src",
+                    "value": "luminance"
+                },
+                {
+                    "name": "Invert alpha channel",
+                    "value": 0
+                },
+                {
+                    "name": "Aspect Ratio",
+                    "value": 0
+                },
+                {
+                    "name": "Stretch Axis index",
+                    "value": 0
+                },
+                {
+                    "name": "Stretch Axis",
+                    "value": "X"
+                },
+                {
+                    "name": "Position",
+                    "value": 0
+                },
+                {
+                    "name": "Crop",
+                    "value": 0
+                },
+                {
+                    "name": "flip x",
+                    "value": 0
+                },
+                {
+                    "name": "flip y",
+                    "value": 0
+                },
+                {
+                    "name": "Transform",
+                    "value": 0
+                },
+                {
+                    "name": "Scale X",
+                    "value": 1
+                },
+                {
+                    "name": "Scale Y",
+                    "value": 1
+                },
+                {
+                    "name": "Position X",
+                    "value": 0
+                },
+                {
+                    "name": "Position Y",
+                    "value": 0
+                },
+                {
+                    "name": "Rotation",
+                    "value": 0
+                },
+                {
+                    "name": "Clip Repeat",
+                    "value": 0
+                }
+            ],
+            "objName": "Ops.Gl.ImageCompose.DrawImage_v3"
+        },
+        {
+            "id": "gslh4tx25",
+            "uiAttribs": {},
+            "portsIn": [
+                {
+                    "name": "Size index",
+                    "value": 2
+                },
+                {
+                    "name": "Size",
+                    "value": "Manual"
+                },
+                {
+                    "name": "Width",
+                    "value": 988
+                },
+                {
+                    "name": "Height",
+                    "value": 823
+                },
+                {
+                    "name": "Filter index",
+                    "value": 1
+                },
+                {
+                    "name": "Filter",
+                    "value": "linear"
+                },
+                {
+                    "name": "Wrap index",
+                    "value": 2
+                },
+                {
+                    "name": "Wrap",
+                    "value": "mirrored repeat"
+                },
+                {
+                    "name": "Anisotropic index",
+                    "value": 0
+                },
+                {
+                    "name": "Anisotropic",
+                    "value": "0"
+                },
+                {
+                    "name": "Pixel Format index",
+                    "value": 9
+                },
+                {
+                    "name": "Pixel Format",
+                    "value": "RGBA 16bit float"
+                },
+                {
+                    "name": "Clear",
+                    "value": 1
+                },
+                {
+                    "name": "R",
+                    "value": 0
+                },
+                {
+                    "name": "G",
+                    "value": 0
+                },
+                {
+                    "name": "B",
+                    "value": 0
+                },
+                {
+                    "name": "A",
+                    "value": 0
+                }
+            ],
+            "portsOut": [
+                {
+                    "name": "Next",
+                    "links": [
+                        {
+                            "portIn": "render",
+                            "portOut": "Next",
+                            "objIn": "ehbsrly61",
+                            "objOut": "gslh4tx25"
+                        }
+                    ]
+                },
+                {
+                    "name": "texture_out",
+                    "links": [
+                        {
+                            "portIn": "Image",
+                            "portOut": "texture_out",
+                            "objIn": "iosqeuvrw",
+                            "objOut": "gslh4tx25"
+                        }
+                    ]
+                },
+                {
+                    "name": "Aspect Ratio",
+                    "value": 1.2004860267314703
+                },
+                {
+                    "name": "Texture Width",
+                    "value": 988
+                },
+                {
+                    "name": "Texture Height",
+                    "value": 823
+                }
+            ],
+            "objName": "Ops.Gl.ImageCompose.ImageCompose_v4"
+        },
+        {
+            "id": "ehbsrly61",
+            "uiAttribs": {},
+            "portsIn": [
+                {
+                    "name": "posX",
+                    "value": 0
+                },
+                {
+                    "name": "posY",
+                    "value": 0
+                },
+                {
+                    "name": "posZ",
+                    "value": 0
+                },
+                {
+                    "name": "scale",
+                    "value": 0.42
+                },
+                {
+                    "name": "rotX",
+                    "value": 0
+                },
+                {
+                    "name": "rotY",
+                    "value": 0
+                },
+                {
+                    "name": "rotZ",
+                    "value": 0
+                }
+            ],
+            "portsOut": [
+                {
+                    "name": "trigger",
+                    "links": [
+                        {
+                            "portIn": "render",
+                            "portOut": "trigger",
+                            "objIn": "lvhqc8omy",
+                            "objOut": "ehbsrly61"
+                        }
+                    ]
+                }
+            ],
+            "objName": "Ops.Graphics.Transform"
+        },
+        {
+            "id": "jj28n9hhl",
+            "uiAttribs": {},
+            "portsIn": [
+                {
+                    "name": "Scale index",
+                    "value": 1
+                },
+                {
+                    "name": "Scale",
+                    "value": "Fit"
+                },
+                {
+                    "name": "Flip Y",
+                    "value": 0
+                },
+                {
+                    "name": "Flip X",
+                    "value": 0
+                }
+            ],
+            "objName": "Ops.Gl.Meshes.FullscreenRectangle_v2"
+        },
+        {
+            "id": "iosqeuvrw",
+            "uiAttribs": {},
+            "portsIn": [
+                {
+                    "name": "blendMode index",
+                    "value": 2
+                },
+                {
+                    "name": "blendMode",
+                    "value": "darken"
+                },
+                {
+                    "name": "amount",
+                    "value": 1
+                },
+                {
+                    "name": "Premultiplied",
+                    "value": 0
+                },
+                {
+                    "name": "Alpha Mask",
+                    "value": 0
+                },
+                {
+                    "name": "removeAlphaSrc",
+                    "value": 0
+                },
+                {
+                    "name": "Mask Src index",
+                    "value": 1
+                },
+                {
+                    "name": "Mask Src",
+                    "value": "luminance"
+                },
+                {
+                    "name": "Invert alpha channel",
+                    "value": 0
+                },
+                {
+                    "name": "Aspect Ratio",
+                    "value": 0
+                },
+                {
+                    "name": "Stretch Axis index",
+                    "value": 0
+                },
+                {
+                    "name": "Stretch Axis",
+                    "value": "X"
+                },
+                {
+                    "name": "Position",
+                    "value": 0
+                },
+                {
+                    "name": "Crop",
+                    "value": 0
+                },
+                {
+                    "name": "flip x",
+                    "value": 0
+                },
+                {
+                    "name": "flip y",
+                    "value": 0
+                },
+                {
+                    "name": "Transform",
+                    "value": 0
+                },
+                {
+                    "name": "Scale X",
+                    "value": 1
+                },
+                {
+                    "name": "Scale Y",
+                    "value": 1
+                },
+                {
+                    "name": "Position X",
+                    "value": 0
+                },
+                {
+                    "name": "Position Y",
+                    "value": 0
+                },
+                {
+                    "name": "Rotation",
+                    "value": 0
+                },
+                {
+                    "name": "Clip Repeat",
+                    "value": 0
+                }
+            ],
+            "portsOut": [
+                {
+                    "name": "trigger",
+                    "links": [
+                        {
+                            "portIn": "render",
+                            "portOut": "trigger",
+                            "objIn": "bdr7v4a7u",
+                            "objOut": "iosqeuvrw"
+                        }
+                    ]
+                }
+            ],
+            "objName": "Ops.Gl.ImageCompose.DrawImage_v3"
+        },
+        {
+            "id": "e7ynf0hus",
+            "uiAttribs": {},
+            "portsIn": [
+                {
+                    "name": "Size index",
+                    "value": 2
+                },
+                {
+                    "name": "Size",
+                    "value": "Manual"
+                },
+                {
+                    "name": "Width",
+                    "value": 1187
+                },
+                {
+                    "name": "Height",
+                    "value": 1730
+                },
+                {
+                    "name": "Filter index",
+                    "value": 1
+                },
+                {
+                    "name": "Filter",
+                    "value": "linear"
+                },
+                {
+                    "name": "Wrap index",
+                    "value": 1
+                },
+                {
+                    "name": "Wrap",
+                    "value": "repeat"
+                },
+                {
+                    "name": "Anisotropic index",
+                    "value": 5
+                },
+                {
+                    "name": "Anisotropic",
+                    "value": "16"
+                },
+                {
+                    "name": "Pixel Format index",
+                    "value": 6
+                },
+                {
+                    "name": "Pixel Format",
+                    "value": "RGB 11/11/10bit float"
+                },
+                {
+                    "name": "Clear",
+                    "value": 1
+                },
+                {
+                    "name": "R",
+                    "value": 1
+                },
+                {
+                    "name": "G",
+                    "value": 1
+                },
+                {
+                    "name": "B",
+                    "value": 1
+                },
+                {
+                    "name": "A",
+                    "value": 0
+                }
+            ],
+            "portsOut": [
+                {
+                    "name": "Next",
+                    "links": [
+                        {
+                            "portIn": "render",
+                            "portOut": "Next",
+                            "objIn": "kgpfd45ba",
+                            "objOut": "e7ynf0hus"
+                        }
+                    ]
+                },
+                {
+                    "name": "texture_out",
+                    "links": [
+                        {
+                            "portIn": "Texture",
+                            "portOut": "texture_out",
+                            "objIn": "jj28n9hhl",
+                            "objOut": "e7ynf0hus"
+                        }
+                    ]
+                },
+                {
+                    "name": "Aspect Ratio",
+                    "value": 0.6861271676300578
+                },
+                {
+                    "name": "Texture Width",
+                    "value": 1187
+                },
+                {
+                    "name": "Texture Height",
+                    "value": 1730
+                }
+            ],
+            "objName": "Ops.Gl.ImageCompose.ImageCompose_v4"
+        },
+        {
+            "id": "bdr7v4a7u",
+            "uiAttribs": {},
+            "portsIn": [
+                {
+                    "name": "contrast",
+                    "value": 1
+                },
+                {
+                    "name": "brightness",
+                    "value": 0.316
+                }
+            ],
+            "portsOut": [
+                {
+                    "name": "trigger",
+                    "links": [
+                        {
+                            "portIn": "Render",
+                            "portOut": "trigger",
+                            "objIn": "y1ji0g7se",
+                            "objOut": "bdr7v4a7u"
+                        }
+                    ]
+                }
+            ],
+            "objName": "Ops.Gl.ImageCompose.BrightnessContrast"
+        },
+        {
+            "id": "y1ji0g7se",
+            "uiAttribs": {},
+            "portsIn": [
+                {
+                    "name": "amount",
+                    "value": -0.26
+                }
+            ],
+            "portsOut": [
+                {
+                    "name": "Trigger",
+                    "links": [
+                        {
+                            "portIn": "Render",
+                            "portOut": "Trigger",
+                            "objIn": "thklkqp9c",
+                            "objOut": "y1ji0g7se"
+                        }
+                    ]
+                }
+            ],
+            "objName": "Ops.Gl.ImageCompose.Clarity"
+        },
+        {
+            "id": "ar69bch1m",
+            "uiAttribs": {},
+            "portsIn": [
+                {
+                    "name": "blendMode index",
+                    "value": 0
+                },
+                {
+                    "name": "blendMode",
+                    "value": "normal"
+                },
+                {
+                    "name": "amount",
+                    "value": 1
+                },
+                {
+                    "name": "Premultiplied",
+                    "value": 0
+                },
+                {
+                    "name": "Alpha Mask",
+                    "value": 0
+                },
+                {
+                    "name": "removeAlphaSrc",
+                    "value": 0
+                },
+                {
+                    "name": "Mask Src index",
+                    "value": 1
+                },
+                {
+                    "name": "Mask Src",
+                    "value": "luminance"
+                },
+                {
+                    "name": "Invert alpha channel",
+                    "value": 0
+                },
+                {
+                    "name": "Aspect Ratio",
+                    "value": 0
+                },
+                {
+                    "name": "Stretch Axis index",
+                    "value": 0
+                },
+                {
+                    "name": "Stretch Axis",
+                    "value": "X"
+                },
+                {
+                    "name": "Position",
+                    "value": 0
+                },
+                {
+                    "name": "Crop",
+                    "value": 0
+                },
+                {
+                    "name": "flip x",
+                    "value": 0
+                },
+                {
+                    "name": "flip y",
+                    "value": 0
+                },
+                {
+                    "name": "Transform",
+                    "value": 0
+                },
+                {
+                    "name": "Scale X",
+                    "value": 1
+                },
+                {
+                    "name": "Scale Y",
+                    "value": 1
+                },
+                {
+                    "name": "Position X",
+                    "value": 0
+                },
+                {
+                    "name": "Position Y",
+                    "value": 0
+                },
+                {
+                    "name": "Rotation",
+                    "value": 0
+                },
+                {
+                    "name": "Clip Repeat",
+                    "value": 0
+                }
+            ],
+            "objName": "Ops.Gl.ImageCompose.DrawImage_v3"
+        },
+        {
+            "id": "uv3gjd5eb",
+            "uiAttribs": {},
+            "portsIn": [
+                {
+                    "name": "Size index",
+                    "value": 0
+                },
+                {
+                    "name": "Size",
+                    "value": "Auto"
+                },
+                {
+                    "name": "Width",
+                    "value": 640
+                },
+                {
+                    "name": "Height",
+                    "value": 480
+                },
+                {
+                    "name": "Filter index",
+                    "value": 1
+                },
+                {
+                    "name": "Filter",
+                    "value": "linear"
+                },
+                {
+                    "name": "Wrap index",
+                    "value": 1
+                },
+                {
+                    "name": "Wrap",
+                    "value": "repeat"
+                },
+                {
+                    "name": "Anisotropic index",
+                    "value": 0
+                },
+                {
+                    "name": "Anisotropic",
+                    "value": "0"
+                },
+                {
+                    "name": "Pixel Format index",
+                    "value": 4
+                },
+                {
+                    "name": "Pixel Format",
+                    "value": "RGBA 8bit ubyte"
+                },
+                {
+                    "name": "Clear",
+                    "value": 1
+                },
+                {
+                    "name": "R",
+                    "value": 0
+                },
+                {
+                    "name": "G",
+                    "value": 0
+                },
+                {
+                    "name": "B",
+                    "value": 0
+                },
+                {
+                    "name": "A",
+                    "value": 0
+                }
+            ],
+            "portsOut": [
+                {
+                    "name": "Next",
+                    "links": [
+                        {
+                            "portIn": "render",
+                            "portOut": "Next",
+                            "objIn": "ar69bch1m",
+                            "objOut": "uv3gjd5eb"
+                        }
+                    ]
+                },
+                {
+                    "name": "texture_out",
+                    "links": [
+                        {
+                            "portIn": "mask",
+                            "portOut": "texture_out",
+                            "objIn": "o0ug2keoi",
+                            "objOut": "uv3gjd5eb"
+                        }
+                    ]
+                },
+                {
+                    "name": "Aspect Ratio",
+                    "value": 1.2900403768506057
+                },
+                {
+                    "name": "Texture Width",
+                    "value": 1917
+                },
+                {
+                    "name": "Texture Height",
+                    "value": 1486
+                }
+            ],
+            "objName": "Ops.Gl.ImageCompose.ImageCompose_v4"
+        },
+        {
+            "id": "0ewv4rjm8",
+            "uiAttribs": {},
+            "portsIn": [
+                {
+                    "name": "Coordinates index",
+                    "value": 0
+                },
+                {
+                    "name": "Coordinates",
+                    "value": "-1 to 1"
+                },
+                {
+                    "name": "Area index",
+                    "value": 0
+                },
+                {
+                    "name": "Area",
+                    "value": "Canvas Area"
+                },
+                {
+                    "name": "flip y",
+                    "value": 1
+                },
+                {
+                    "name": "right click prevent default",
+                    "value": 1
+                },
+                {
+                    "name": "Events index",
+                    "value": 0
+                },
+                {
+                    "name": "Events",
+                    "value": "Pointer"
+                },
+                {
+                    "name": "Passive Events",
+                    "value": 0
+                },
+                {
+                    "name": "Active",
+                    "value": 1
+                }
+            ],
+            "portsOut": [
+                {
+                    "name": "x",
+                    "links": [
+                        {
+                            "portIn": "Pos X",
+                            "portOut": "x",
+                            "objIn": "04kuzs6ao",
+                            "objOut": "0ewv4rjm8"
+                        },
+                        {
+                            "portIn": "Pos X",
+                            "portOut": "x",
+                            "objIn": "szvhq8z3m",
+                            "objOut": "0ewv4rjm8"
+                        },
+                        {
+                            "portIn": "value",
+                            "portOut": "x",
+                            "objIn": "qmn0pygzw",
+                            "objOut": "0ewv4rjm8"
+                        }
+                    ]
+                },
+                {
+                    "name": "y",
+                    "links": [
+                        {
+                            "portIn": "Pos Y",
+                            "portOut": "y",
+                            "objIn": "04kuzs6ao",
+                            "objOut": "0ewv4rjm8"
+                        },
+                        {
+                            "portIn": "Pos Y",
+                            "portOut": "y",
+                            "objIn": "szvhq8z3m",
+                            "objOut": "0ewv4rjm8"
+                        }
+                    ]
+                },
+                {
+                    "name": "Button is down",
+                    "value": 0
+                },
+                {
+                    "name": "Mouse is hovering",
+                    "value": 0
+                },
+                {
+                    "name": "Movement X",
+                    "value": -98.16513460861022
+                },
+                {
+                    "name": "Movement Y",
+                    "value": -43.11926473462318
+                }
+            ],
+            "objName": "Ops.Devices.Mouse.Mouse_v4"
+        },
+        {
+            "id": "oc5yt4x12",
+            "uiAttribs": {},
+            "portsIn": [
+                {
+                    "name": "blendMode index",
+                    "value": 6
+                },
+                {
+                    "name": "blendMode",
+                    "value": "add"
+                },
+                {
+                    "name": "amount",
+                    "value": 0.647
+                },
+                {
+                    "name": "Premultiplied",
+                    "value": 1
+                },
+                {
+                    "name": "Alpha Mask",
+                    "value": 0
+                },
+                {
+                    "name": "removeAlphaSrc",
+                    "value": 0
+                },
+                {
+                    "name": "Mask Src index",
+                    "value": 1
+                },
+                {
+                    "name": "Mask Src",
+                    "value": "luminance"
+                },
+                {
+                    "name": "Invert alpha channel",
+                    "value": 0
+                },
+                {
+                    "name": "Aspect Ratio",
+                    "value": 0
+                },
+                {
+                    "name": "Stretch Axis index",
+                    "value": 0
+                },
+                {
+                    "name": "Stretch Axis",
+                    "value": "X"
+                },
+                {
+                    "name": "Position",
+                    "value": 0
+                },
+                {
+                    "name": "Crop",
+                    "value": 0
+                },
+                {
+                    "name": "flip x",
+                    "value": 0
+                },
+                {
+                    "name": "flip y",
+                    "value": 0
+                },
+                {
+                    "name": "Transform",
+                    "value": 0
+                },
+                {
+                    "name": "Scale X",
+                    "value": 1
+                },
+                {
+                    "name": "Scale Y",
+                    "value": 1
+                },
+                {
+                    "name": "Position X",
+                    "value": 0
+                },
+                {
+                    "name": "Position Y",
+                    "value": 0
+                },
+                {
+                    "name": "Rotation",
+                    "value": 0
+                },
+                {
+                    "name": "Clip Repeat",
+                    "value": 0
+                }
+            ],
+            "objName": "Ops.Gl.ImageCompose.DrawImage_v3"
+        },
+        {
+            "id": "kgpfd45ba",
+            "uiAttribs": {},
+            "portsIn": [
+                {
+                    "name": "r",
+                    "value": 0.9425612513224284
+                },
+                {
+                    "name": "g",
+                    "value": 0.9425612513224284
+                },
+                {
+                    "name": "b",
+                    "value": 0.9425612513224284
+                },
+                {
+                    "name": "a",
+                    "value": 1
+                }
+            ],
+            "portsOut": [
+                {
+                    "name": "trigger",
+                    "links": [
+                        {
+                            "portIn": "render",
+                            "portOut": "trigger",
+                            "objIn": "iosqeuvrw",
+                            "objOut": "kgpfd45ba"
+                        }
+                    ]
+                }
+            ],
+            "objName": "Ops.Gl.ClearColor"
+        },
+        {
+            "id": "04kuzs6ao",
+            "uiAttribs": {},
+            "portsIn": [
+                {
+                    "name": "Amount",
+                    "value": 1
+                },
+                {
+                    "name": "Blend Mode index",
+                    "value": 0
+                },
+                {
+                    "name": "Blend Mode",
+                    "value": "normal"
+                },
+                {
+                    "name": "Alpha Mask index",
+                    "value": 0
+                },
+                {
+                    "name": "Alpha Mask",
+                    "value": "Off"
+                },
+                {
+                    "name": "Size",
+                    "value": 1
+                },
+                {
+                    "name": "Inner",
+                    "value": 0
+                },
+                {
+                    "name": "Stretch X",
+                    "value": 0
+                },
+                {
+                    "name": "Stretch Y",
+                    "value": 0
+                },
+                {
+                    "name": "fallOff index",
+                    "value": 1
+                },
+                {
+                    "name": "fallOff",
+                    "value": "SmoothStep"
+                },
+                {
+                    "name": "fade Out",
+                    "value": 0.758
+                },
+                {
+                    "name": "warn overflow",
+                    "value": 1
+                },
+                {
+                    "name": "r",
+                    "value": 1
+                },
+                {
+                    "name": "g",
+                    "value": 1
+                },
+                {
+                    "name": "b",
+                    "value": 1
+                },
+                {
+                    "name": "a",
+                    "value": 1
+                }
+            ],
+            "objName": "Ops.Gl.ImageCompose.CircleTexture_v4"
+        },
+        {
+            "id": "ytn9ypchq",
+            "uiAttribs": {},
+            "portsIn": [
+                {
+                    "name": "Size index",
+                    "value": 0
+                },
+                {
+                    "name": "Size",
+                    "value": "Auto"
+                },
+                {
+                    "name": "Width",
+                    "value": 640
+                },
+                {
+                    "name": "Height",
+                    "value": 480
+                },
+                {
+                    "name": "Filter index",
+                    "value": 2
+                },
+                {
+                    "name": "Filter",
+                    "value": "mipmap"
+                },
+                {
+                    "name": "Wrap index",
+                    "value": 1
+                },
+                {
+                    "name": "Wrap",
+                    "value": "repeat"
+                },
+                {
+                    "name": "Anisotropic index",
+                    "value": 0
+                },
+                {
+                    "name": "Anisotropic",
+                    "value": "0"
+                },
+                {
+                    "name": "Pixel Format index",
+                    "value": 4
+                },
+                {
+                    "name": "Pixel Format",
+                    "value": "RGBA 8bit ubyte"
+                },
+                {
+                    "name": "Clear",
+                    "value": 1
+                },
+                {
+                    "name": "R",
+                    "value": 0
+                },
+                {
+                    "name": "G",
+                    "value": 0
+                },
+                {
+                    "name": "B",
+                    "value": 0
+                },
+                {
+                    "name": "A",
+                    "value": 0
+                }
+            ],
+            "portsOut": [
+                {
+                    "name": "Next",
+                    "links": [
+                        {
+                            "portIn": "Render",
+                            "portOut": "Next",
+                            "objIn": "04kuzs6ao",
+                            "objOut": "ytn9ypchq"
+                        }
+                    ]
+                },
+                {
+                    "name": "Aspect Ratio",
+                    "value": 1.2900403768506057
+                },
+                {
+                    "name": "Texture Width",
+                    "value": 1917
+                },
+                {
+                    "name": "Texture Height",
+                    "value": 1486
+                }
+            ],
+            "objName": "Ops.Gl.ImageCompose.ImageCompose_v4"
+        },
+        {
+            "id": "epdeq09k8",
+            "uiAttribs": {},
+            "portsIn": [
+                {
+                    "name": "Size index",
+                    "value": 0
+                },
+                {
+                    "name": "Size",
+                    "value": "Auto"
+                },
+                {
+                    "name": "Width",
+                    "value": 640
+                },
+                {
+                    "name": "Height",
+                    "value": 480
+                },
+                {
+                    "name": "Filter index",
+                    "value": 1
+                },
+                {
+                    "name": "Filter",
+                    "value": "linear"
+                },
+                {
+                    "name": "Wrap index",
+                    "value": 1
+                },
+                {
+                    "name": "Wrap",
+                    "value": "repeat"
+                },
+                {
+                    "name": "Anisotropic index",
+                    "value": 0
+                },
+                {
+                    "name": "Anisotropic",
+                    "value": "0"
+                },
+                {
+                    "name": "Pixel Format index",
+                    "value": 4
+                },
+                {
+                    "name": "Pixel Format",
+                    "value": "RGBA 8bit ubyte"
+                },
+                {
+                    "name": "Clear",
+                    "value": 1
+                },
+                {
+                    "name": "R",
+                    "value": 0
+                },
+                {
+                    "name": "G",
+                    "value": 0
+                },
+                {
+                    "name": "B",
+                    "value": 0
+                },
+                {
+                    "name": "A",
+                    "value": 0
+                }
+            ],
+            "portsOut": [
+                {
+                    "name": "Next",
+                    "links": [
+                        {
+                            "portIn": "Render",
+                            "portOut": "Next",
+                            "objIn": "szvhq8z3m",
+                            "objOut": "epdeq09k8"
+                        }
+                    ]
+                },
+                {
+                    "name": "texture_out",
+                    "links": [
+                        {
+                            "portIn": "Mask",
+                            "portOut": "texture_out",
+                            "objIn": "oc5yt4x12",
+                            "objOut": "epdeq09k8"
+                        },
+                        {
+                            "portIn": "Mask",
+                            "portOut": "texture_out",
+                            "objIn": "85wef35cw",
+                            "objOut": "epdeq09k8"
+                        }
+                    ]
+                },
+                {
+                    "name": "Aspect Ratio",
+                    "value": 1.2900403768506057
+                },
+                {
+                    "name": "Texture Width",
+                    "value": 1917
+                },
+                {
+                    "name": "Texture Height",
+                    "value": 1486
+                }
+            ],
+            "objName": "Ops.Gl.ImageCompose.ImageCompose_v4"
+        },
+        {
+            "id": "szvhq8z3m",
+            "uiAttribs": {},
+            "portsIn": [
+                {
+                    "name": "Amount",
+                    "value": 1
+                },
+                {
+                    "name": "Blend Mode index",
+                    "value": 0
+                },
+                {
+                    "name": "Blend Mode",
+                    "value": "normal"
+                },
+                {
+                    "name": "Alpha Mask index",
+                    "value": 0
+                },
+                {
+                    "name": "Alpha Mask",
+                    "value": "Off"
+                },
+                {
+                    "name": "Size",
+                    "value": 0.694
+                },
+                {
+                    "name": "Inner",
+                    "value": 0
+                },
+                {
+                    "name": "Stretch X",
+                    "value": 0
+                },
+                {
+                    "name": "Stretch Y",
+                    "value": 0
+                },
+                {
+                    "name": "fallOff index",
+                    "value": 1
+                },
+                {
+                    "name": "fallOff",
+                    "value": "SmoothStep"
+                },
+                {
+                    "name": "fade Out",
+                    "value": 0.733
+                },
+                {
+                    "name": "warn overflow",
+                    "value": 0
+                },
+                {
+                    "name": "r",
+                    "value": 1
+                },
+                {
+                    "name": "g",
+                    "value": 1
+                },
+                {
+                    "name": "b",
+                    "value": 1
+                },
+                {
+                    "name": "a",
+                    "value": 1
+                }
+            ],
+            "objName": "Ops.Gl.ImageCompose.CircleTexture_v4"
+        },
+        {
+            "id": "l2jae93pf",
+            "uiAttribs": {},
+            "portsIn": [
+                {
+                    "name": "Invert",
+                    "value": 0
+                },
+                {
+                    "name": "Black White",
+                    "value": 0
+                },
+                {
+                    "name": "Remove Alpha",
+                    "value": 0
+                },
+                {
+                    "name": "Remap",
+                    "value": 1
+                },
+                {
+                    "name": "Threshold low ",
+                    "value": 0.354
+                },
+                {
+                    "name": "Threshold high",
+                    "value": 0.9
+                }
+            ],
+            "objName": "Ops.Gl.ImageCompose.LumaKey_v3"
+        },
+        {
+            "id": "qmn0pygzw",
+            "uiAttribs": {},
+            "portsOut": [
+                {
+                    "name": "result",
+                    "links": [
+                        {
+                            "portIn": "value",
+                            "portOut": "result",
+                            "objIn": "oq6t2k99v",
+                            "objOut": "qmn0pygzw"
+                        },
+                        {
+                            "portIn": "value",
+                            "portOut": "result",
+                            "objIn": "62m8scd2g",
+                            "objOut": "qmn0pygzw"
+                        }
+                    ]
+                }
+            ],
+            "objName": "Ops.Number.Number"
+        },
+        {
+            "id": "oq6t2k99v",
+            "uiAttribs": {},
+            "portsIn": [
+                {
+                    "name": "old min",
+                    "value": -1
+                },
+                {
+                    "name": "old max",
+                    "value": 1
+                },
+                {
+                    "name": "new min",
+                    "value": 0.023
+                },
+                {
+                    "name": "new max",
+                    "value": 0.284
+                },
+                {
+                    "name": "Easing index",
+                    "value": 0
+                },
+                {
+                    "name": "Easing",
+                    "value": "Linear"
+                },
+                {
+                    "name": "Clamp",
+                    "value": 1
+                }
+            ],
+            "portsOut": [
+                {
+                    "name": "result",
+                    "links": [
+                        {
+                            "portIn": "Threshold low ",
+                            "portOut": "result",
+                            "objIn": "y0nrtbr98",
+                            "objOut": "oq6t2k99v"
+                        }
+                    ]
+                }
+            ],
+            "objName": "Ops.Math.MapRange"
+        },
+        {
+            "id": "62m8scd2g",
+            "uiAttribs": {},
+            "portsIn": [
+                {
+                    "name": "old min",
+                    "value": -1
+                },
+                {
+                    "name": "old max",
+                    "value": 1
+                },
+                {
+                    "name": "new min",
+                    "value": 0.388
+                },
+                {
+                    "name": "new max",
+                    "value": 0.907
+                },
+                {
+                    "name": "Easing index",
+                    "value": 0
+                },
+                {
+                    "name": "Easing",
+                    "value": "Linear"
+                },
+                {
+                    "name": "Clamp",
+                    "value": 1
+                }
+            ],
+            "portsOut": [
+                {
+                    "name": "result",
+                    "links": [
+                        {
+                            "portIn": "Threshold high",
+                            "portOut": "result",
+                            "objIn": "y0nrtbr98",
+                            "objOut": "62m8scd2g"
+                        }
+                    ]
+                }
+            ],
+            "objName": "Ops.Math.MapRange"
+        },
+        {
+            "id": "aa7tvem0f",
+            "uiAttribs": {},
+            "portsIn": [
+                {
+                    "name": "File",
+                    "value": "_DSF2140_Kopie_2.png",
+                    "display": "file"
+                },
+                {
+                    "name": "Filter index",
+                    "value": 1
+                },
+                {
+                    "name": "Filter",
+                    "value": "linear"
+                },
+                {
+                    "name": "Wrap index",
+                    "value": 0
+                },
+                {
+                    "name": "Wrap",
+                    "value": "repeat"
+                },
+                {
+                    "name": "Anisotropic index",
+                    "value": 0
+                },
+                {
+                    "name": "Anisotropic",
+                    "value": "0"
+                },
+                {
+                    "name": "Data Format index",
+                    "value": 3
+                },
+                {
+                    "name": "Data Format",
+                    "value": "RGBA"
+                },
+                {
+                    "name": "Flip",
+                    "value": 0
+                },
+                {
+                    "name": "Pre Multiplied Alpha",
+                    "value": 0
+                },
+                {
+                    "name": "Active",
+                    "value": 1
+                },
+                {
+                    "name": "Save Memory",
+                    "value": 1
+                },
+                {
+                    "name": "Add Cachebuster",
+                    "value": 0
+                }
+            ],
+            "portsOut": [
+                {
+                    "name": "Texture",
+                    "links": [
+                        {
+                            "portIn": "Image",
+                            "portOut": "Texture",
+                            "objIn": "dp8a5hgk3",
+                            "objOut": "aa7tvem0f"
+                        },
+                        {
+                            "portIn": "Image",
+                            "portOut": "Texture",
+                            "objIn": "ar69bch1m",
+                            "objOut": "aa7tvem0f"
+                        },
+                        {
+                            "portIn": "Image",
+                            "portOut": "Texture",
+                            "objIn": "0rhhni4m1",
+                            "objOut": "aa7tvem0f"
+                        }
+                    ]
+                },
+                {
+                    "name": "Width",
+                    "value": 1181
+                },
+                {
+                    "name": "Height",
+                    "value": 1772
+                },
+                {
+                    "name": "Aspect Ratio",
+                    "value": 0.6664785553047404
+                },
+                {
+                    "name": "Loaded",
+                    "value": 1
+                },
+                {
+                    "name": "Loading",
+                    "value": 0
+                }
+            ],
+            "objName": "Ops.Gl.Texture_v2"
+        },
+        {
+            "id": "wrz6wjwa9",
+            "uiAttribs": {},
+            "portsIn": [
+                {
+                    "name": "span index",
+                    "value": 5
+                },
+                {
+                    "name": "span",
+                    "value": "32"
+                },
+                {
+                    "name": "reduceMin",
+                    "value": 128
+                },
+                {
+                    "name": "reduceMul",
+                    "value": 8
+                },
+                {
+                    "name": "use viewport size",
+                    "value": 1
+                },
+                {
+                    "name": "width",
+                    "value": 0
+                },
+                {
+                    "name": "height",
+                    "value": 0
+                }
+            ],
+            "objName": "Ops.Gl.ImageCompose.FXAA"
+        },
+        {
+            "id": "6xc41ho0f",
+            "uiAttribs": {},
+            "portsIn": [
+                {
+                    "name": "span index",
+                    "value": 4
+                },
+                {
+                    "name": "span",
+                    "value": "16"
+                },
+                {
+                    "name": "reduceMin",
+                    "value": 141.56
+                },
+                {
+                    "name": "reduceMul",
+                    "value": 52.83
+                },
+                {
+                    "name": "use viewport size",
+                    "value": 1
+                },
+                {
+                    "name": "width",
+                    "value": 0
+                },
+                {
+                    "name": "height",
+                    "value": 0
+                }
+            ],
+            "objName": "Ops.Gl.ImageCompose.FXAA"
+        },
+        {
+            "id": "thklkqp9c",
+            "uiAttribs": {},
+            "portsIn": [
+                {
+                    "name": "amount",
+                    "value": 0.171
+                }
+            ],
+            "portsOut": [
+                {
+                    "name": "Trigger",
+                    "links": [
+                        {
+                            "portIn": "render",
+                            "portOut": "Trigger",
+                            "objIn": "6xc41ho0f",
+                            "objOut": "thklkqp9c"
+                        }
+                    ]
+                }
+            ],
+            "objName": "Ops.Gl.ImageCompose.Sharpen"
+        }
+    ],
+    "export": {
+        "time": "2025-09-09 18:30",
+        "service": "html",
+        "exportNumber": 7
+    }
+}

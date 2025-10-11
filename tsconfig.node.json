@@ -1,12 +1,21 @@
 {
   "compilerOptions": {
-    "composite": true,
-    "skipLibCheck": true,
-    "module": "ESNext",
-    "moduleResolution": "bundler",
-    "allowSyntheticDefaultImports": true,
+    "composite": true,        // Required for project references
+    "target": "ES2020",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "esModuleInterop": true,
     "strict": true,
-    "noEmit": true
+    "skipLibCheck": true,
+    "outDir": ".vercel/api-output",
+    "rootDir": ".",          // Changed to include all referenced files
+    "declaration": true,     // Required for project references
+    "declarationMap": true   // Helpful for project references
   },
-  "include": ["vite.config.js", "tailwind.config.js"]
+  "include": [
+    "api/**/*.js", 
+    "api/**/*.ts",
+    "vite.config.js",
+    "tailwind.config.js"
+  ]
 }

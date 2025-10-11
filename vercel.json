@@ -1,31 +1,23 @@
 {
-  "devCommand": "npm run dev",
+  "version": 2,
   "buildCommand": "npm run build",
+  "devCommand": "npm run dev",
   "outputDirectory": "dist",
   "functions": {
     "api/protected-assets/[...path].js": {
-      "maxDuration": 30,
       "memory": 1024
+    },
+    "api/debug-assets.js": {
+      "memory": 512
+    },
+    "api/test-image.js": {
+      "memory": 512
+    },
+    "api/direct-test.js": {
+      "memory": 512
+    },
+    "api/check-files.js": {
+      "memory": 512
     }
-  },
-  "headers": [
-    {
-      "source": "/api/protected-assets/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "private, max-age=3600"
-        },
-        {
-          "key": "Access-Control-Allow-Origin",
-          "value": "*"
-        },
-        {
-          "key": "Access-Control-Allow-Methods", 
-          "value": "GET, OPTIONS"
-        }
-      ]
-    }
-  ],
-  "includeFiles": ["protected-assets/**"]
+  }
 }
