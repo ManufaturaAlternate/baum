@@ -56,13 +56,8 @@ class ProtectedAssetService {
 
   async getStaticImage() {
     try {
-      const response = await fetch('/api/protected-assets/images/canvas-static.png')
-      if (!response.ok) {
-        throw new Error(`Failed to load image: ${response.status}`)
-      }
-      
-      const blob = await response.blob()
-      return URL.createObjectURL(blob)
+      // Use consistent path reference using the stored mapping
+      return this.fetchProtectedAsset(this.assetPaths.staticImage)
     } catch (error) {
       console.error('Error loading static image:', error)
       throw error
@@ -71,7 +66,8 @@ class ProtectedAssetService {
 
   async getCablesConfig() {
     try {
-      const response = await fetch('/api/protected-assets/cables/BaumIntro.json')
+      // Use consistent path reference using the stored mapping
+      const response = await fetch(`${this.baseUrl}${this.assetPaths.cablesConfig}`)
       if (!response.ok) {
         throw new Error(`Failed to load CABLES config: ${response.status}`)
       }
@@ -97,11 +93,34 @@ class ProtectedAssetService {
   }
 
   getCablesAssetsPath() {
-    return '/api/protected-assets/cables/assets/'
+    // Use consistent path reference using the stored mapping
+    return `${this.baseUrl}${this.assetPaths.cablesAssets}`
   }
 
   getCablesOpsPath() {
-    return '/api/protected-assets/cables/js/'
+    // Use consistent path reference using the stored mapping
+    return `${this.baseUrl}${this.assetPaths.cablesOps}`
+  }
+
+  // Helper method to get full URL for any asset type
+  getAssetUrl(assetType, filename = '') {
+    if (!this.assetPaths[assetType]) {
+      console.warn(`Unknown asset type: ${assetType}`)
+      return null
+    }
+    return `${this.baseUrl}${this.assetPaths[assetType]}${filename}`
+  }
+
+  // Helper method to debug path issues
+  logPathInfo(filename = '') {
+    console.log('Protected Assets Service Path Information:', {
+      baseUrl: this.baseUrl,
+      staticImagePath: `${this.baseUrl}${this.assetPaths.staticImage}`,
+      cablesConfigPath: `${this.baseUrl}${this.assetPaths.cablesConfig}`,
+      cablesAssetsPath: `${this.baseUrl}${this.assetPaths.cablesAssets}`,
+      cablesOpsPath: `${this.baseUrl}${this.assetPaths.cablesOps}`,
+      requestedFile: filename ? `${this.baseUrl}${this.assetPaths.cablesAssets}${filename}` : null
+    })
   }
 
   clearCache() {
