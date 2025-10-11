@@ -35,6 +35,7 @@ export default async function handler(req, res) {
 
     // Check if file exists
     if (!fs.existsSync(normalizedPath)) {
+      console.log('❌ File not found:', normalizedPath)
       return res.status(404).json({ error: 'Asset not found' })
     }
 
@@ -53,35 +54,6 @@ export default async function handler(req, res) {
       '.gif': 'image/gif',
       '.webp': 'image/webp',
       '.json': 'application/json',
-      '.js': 'application/javascript',
-      '.glsl': 'text/plain',
-      '.obj': 'application/octet-stream',
-      '.mp3': 'audio/mpeg',
-      '.wav': 'audio/wav'
-    }
-    
-    const contentType = contentTypes[ext] || 'application/octet-stream'
-
-    // Set appropriate headers
-    res.setHeader('Content-Type', contentType)
-    res.setHeader('Cache-Control', 'private, max-age=3600')
-    res.setHeader('Content-Length', stats.size)
-
-    // Stream the file
-    const fileBuffer = fs.readFileSync(normalizedPath)
-    res.status(200).send(fileBuffer)
-
-  } catch (error) {
-    console.error('Error serving protected asset:', error)
-    res.status(500).json({ error: 'Internal server error' })
-  }
-}
-
-export const config = {
-  api: {
-    responseLimit: '10mb',
-  },
-}
       '.js': 'application/javascript',
       '.glsl': 'text/plain',
       '.obj': 'application/octet-stream',

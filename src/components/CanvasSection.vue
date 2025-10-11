@@ -39,10 +39,14 @@ let patchInstance = null
 
 const loadProtectedAssets = async () => {
   try {
-    // Load static image for mobile
+    console.log('Loading protected static image...')
+    // Load static image for mobile - now directly from Base64
     staticImageUrl.value = await protectedAssets.getStaticImage()
+    console.log('Static image loaded successfully')
   } catch (error) {
     console.error('Failed to load protected static image:', error)
+    // Use fallback image from public folder
+    staticImageUrl.value = '/canvas-static-fallback.png'
   }
 }
 
@@ -61,8 +65,10 @@ const initializeCanvas = async (canvas) => {
       throw new Error('CABLES library not available')
     }
 
-    // Fetch protected CABLES config
+    console.log('Loading CABLES configuration...')
+    // Fetch protected CABLES config - now directly decoded
     const patchData = await protectedAssets.getCablesConfig()
+    console.log('CABLES config loaded:', patchData)
     
     const assetPath = protectedAssets.getCablesAssetsPath()
     const jsPath = protectedAssets.getCablesOpsPath()

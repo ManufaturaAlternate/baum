@@ -7,7 +7,7 @@ class ProtectedAssetService {
       staticImage: '/images/canvas-static.png',
       cablesConfig: '/cables/BaumIntro.json',
       cablesAssets: '/cables/assets/',
-      cablesOps: '/cables/ops/'
+      cablesOps: '/cables/js/'
     }
   }
 
@@ -55,19 +55,53 @@ class ProtectedAssetService {
   }
 
   async getStaticImage() {
-    return this.fetchProtectedAsset(this.assetPaths.staticImage)
+    try {
+      const response = await fetch('/api/protected-assets/images/canvas-static.png')
+      if (!response.ok) {
+        throw new Error(`Failed to load image: ${response.status}`)
+      }
+      
+      const blob = await response.blob()
+      return URL.createObjectURL(blob)
+    } catch (error) {
+      console.error('Error loading static image:', error)
+      throw error
+    }
   }
 
   async getCablesConfig() {
-    return this.fetchProtectedJSON(this.assetPaths.cablesConfig)
+    try {
+      const response = await fetch('/api/protected-assets/cables/BaumIntro.json')
+      if (!response.ok) {
+        throw new Error(`Failed to load CABLES config: ${response.status}`)
+      }
+      
+      let text = await response.text()
+      // Clean any potential issues with the JSON
+      text = text.trim()
+      // Remove BOM if present
+      if (text.charCodeAt(0) === 0xFEFF) {
+        text = text.slice(1)
+      }
+      // Remove any trailing non-JSON content
+      const lastBrace = text.lastIndexOf('}')
+      if (lastBrace !== -1 && lastBrace < text.length - 1) {
+        text = text.substring(0, lastBrace + 1)
+      }
+      
+      return JSON.parse(text)
+    } catch (error) {
+      console.error('Error loading CABLES config:', error)
+      throw error
+    }
   }
 
   getCablesAssetsPath() {
-    return `${this.baseUrl}${this.assetPaths.cablesAssets}`
+    return '/api/protected-assets/cables/assets/'
   }
 
   getCablesOpsPath() {
-    return `${this.baseUrl}${this.assetPaths.cablesOps}`
+    return '/api/protected-assets/cables/js/'
   }
 
   clearCache() {
