@@ -39,14 +39,9 @@ let patchInstance = null
 
 const loadProtectedAssets = async () => {
   try {
-    console.log('Loading protected static image...')
-    // Load static image for mobile - now directly from Base64
     staticImageUrl.value = await protectedAssets.getStaticImage()
-    console.log('Static image loaded successfully')
   } catch (error) {
     console.error('Failed to load protected static image:', error)
-    // Use fallback image from public folder
-    staticImageUrl.value = '/canvas-static-fallback.png'
   }
 }
 
@@ -59,36 +54,20 @@ const initializeCanvas = async (canvas) => {
   canvas.style.visibility = 'hidden'
   
   try {
-    // Check if CABLES is properly loaded
-    if (!window.CABLES || !window.CABLES.Patch) {
-      console.error('CABLES library not loaded properly')
-      throw new Error('CABLES library not available')
-    }
-
-    console.log('Loading CABLES configuration...')
-    // Fetch protected CABLES config - now directly decoded
     const patchData = await protectedAssets.getCablesConfig()
-    console.log('CABLES config loaded:', patchData)
     
-    const assetPath = protectedAssets.getCablesAssetsPath()
-    const jsPath = protectedAssets.getCablesOpsPath()
-
     const patch = new window.CABLES.Patch({
       prefixAssetPath: '',
-      assetPath: assetPath,
-      jsPath: jsPath,
+      assetPath: protectedAssets.getCablesAssetsPath(),
+      jsPath: protectedAssets.getCablesOpsPath(),
       canvas: canvas,
       glCanvasResizeToWindow: true,
       onError: (initiator, ...args) => {
         console.error('[CABLES Error]', initiator, ...args)
       },
-      onAssetLoadError: (assetPath, error) => {
-        console.error('[CABLES Asset Error]', assetPath, error)
-      },
       onPatchLoaded: (patch) => {
         console.log('CABLES Patch loaded successfully!')
         isLoaded.value = true
-        // Show canvas after a brief delay
         setTimeout(() => {
           canvas.style.visibility = 'visible'
           canvas.style.opacity = '1'
@@ -105,7 +84,6 @@ const initializeCanvas = async (canvas) => {
       }
     })
     
-    // Manually deserialize the patch data
     if (patch.deSerialize && patchData) {
       patch.deSerialize(patchData)
     }
@@ -122,7 +100,6 @@ const handleImageError = () => {
 }
 
 onMounted(async () => {
-  // Load protected assets first
   await loadProtectedAssets()
   
   if (window.CABLES && window.CABLES.Patch) {
