@@ -7,17 +7,8 @@
     "api/protected-assets/[...path].js": {
       "memory": 1024
     },
-    "api/debug-assets.js": {
-      "memory": 512
-    },
-    "api/test-image.js": {
-      "memory": 512
-    },
-    "api/direct-test.js": {
-      "memory": 512
-    },
-    "api/check-files.js": {
-      "memory": 512
+    "api/protected-asset.js": {
+      "memory": 1024
     }
   }
 }
