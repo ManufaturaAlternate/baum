@@ -7,7 +7,8 @@
     <!-- Static image for small screens only -->
     <div class="block sm:hidden absolute inset-0">
       <img 
-        :src="staticImageUrl || '/fallback-canvas.png'" 
+        v-if="staticImageUrl"
+        :src="staticImageUrl" 
         alt="Static Canvas" 
         class="w-full h-full object-cover" 
         @error="handleImageError"
@@ -45,176 +46,113 @@ const loadProtectedAssets = async () => {
     console.log('Protected static image loaded successfully')
   } catch (error) {
     console.error('Failed to load protected static image:', error)
+    throw error;
   }
 }
 
-// Custom asset loader for CABLES that routes through our protected asset API
-const createCustomAssetLoader = () => {
-  return function(url, cb, errorCb, progressCb) {
-    // Log the original request
-    console.log(`CABLES requesting asset: ${url}`)
-    
-    // Check cache first
-    if (assetCache.has(url)) {
-      console.log(`Using cached asset for: ${url}`)
-      return cb(assetCache.get(url))
-    }
-    
-    // Extract filename and extension
-    const filename = url.split('/').pop()
-    const fileExt = filename.split('.').pop().toLowerCase()
-    
-    // Normalize the URL to handle different path formats
-    let apiUrl
-    
-    // Case 1: Bare filename (e.g. "_DSF2140_Kopie_2.png")
-    if (url.indexOf('/') === -1) {
-      // For image files, check in cables/assets/
-      if (['png', 'jpg', 'jpeg', 'gif', 'webp'].includes(fileExt)) {
-        apiUrl = `/api/protected-assets/cables/assets/${url}`
-      } 
-      // For JS files, check in cables/js/
-      else if (['js', 'glsl'].includes(fileExt)) {
-        apiUrl = `/api/protected-assets/cables/js/${url}`
-      }
-      // For JSON files, check in cables/
-      else if (fileExt === 'json') {
-        apiUrl = `/api/protected-assets/cables/${url}`
-      }
-      // Default to cables/assets/ for other files
-      else {
-        apiUrl = `/api/protected-assets/cables/assets/${url}`
-      }
-    }
-    // Case 2: Already has API prefix
-    else if (url.startsWith('/api/protected-assets/')) {
-      apiUrl = url
-    }
-    // Case 3: Has path but no API prefix
-    else {
-      // Clean up path - remove leading slashes
-      const cleanPath = url.replace(/^\/+/, '')
-      apiUrl = `/api/protected-assets/${cleanPath}`
-    }
-    
-    console.log(`Fetching from API: ${apiUrl}`)
-    
-    // Fetch the asset
-    fetch(apiUrl)
-      .then(response => {
-        if (!response.ok) {
-          // If first attempt fails for bare filename, try alternate location
-          if (url.indexOf('/') === -1 && response.status === 404) {
-            console.log(`First attempt failed. Trying alternate location for: ${filename}`)
-            
-            // Try different location based on file type
-            let alternateUrl
-            if (['png', 'jpg', 'jpeg', 'gif', 'webp'].includes(fileExt)) {
-              alternateUrl = `/api/protected-assets/images/${filename}`
-            } else {
-              alternateUrl = `/api/protected-assets/${filename}`
-            }
-            
-            console.log(`Trying alternate URL: ${alternateUrl}`)
-            return fetch(alternateUrl)
-          }
-          throw new Error(`Failed to fetch asset: ${response.status} ${response.statusText}`)
-        }
-        return response
-      })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`Failed to fetch asset: ${response.status} ${response.statusText}`)
-        }
-        
-        // Handle different file types
-        // Images: convert to object URL
-        if (['png', 'jpg', 'jpeg', 'gif', 'webp'].includes(fileExt)) {
-          return response.blob().then(blob => {
-            const objectUrl = URL.createObjectURL(blob)
-            console.log(`Created object URL for image: ${objectUrl}`)
-            // Cache the result
-            assetCache.set(url, objectUrl)
-            cb(objectUrl)
-          })
-        }
-        
-        // JSON: parse and return object
-        if (fileExt === 'json') {
-          return response.json().then(data => {
-            console.log(`Loaded JSON with ${Object.keys(data).length} keys`)
-            // Cache the result
-            assetCache.set(url, data)
-            cb(data)
-          })
-        }
-        
-        // JavaScript, GLSL: return as text
-        if (['js', 'glsl'].includes(fileExt)) {
-          return response.text().then(text => {
-            console.log(`Loaded text file with length ${text.length}`)
-            // Cache the result
-            assetCache.set(url, text)
-            cb(text)
-          })
-        }
-        
-        // Default: return as blob with object URL
-        return response.blob().then(blob => {
-          const objectUrl = URL.createObjectURL(blob)
-          console.log(`Created object URL for blob: ${objectUrl}`)
-          // Cache the result
-          assetCache.set(url, objectUrl)
-          cb(objectUrl)
-        })
-      })
-      .catch(err => {
-        console.error(`Error loading asset ${url}:`, err)
-        
-        // For images, try to use a fallback image
-        if (['png', 'jpg', 'jpeg', 'gif', 'webp'].includes(fileExt)) {
-          console.warn(`Using fallback image for ${url}`)
-          const fallbackUrl = '/fallback-image.png'
-          fetch(fallbackUrl)
-            .then(response => response.blob())
-            .then(blob => {
-              const objectUrl = URL.createObjectURL(blob)
-              cb(objectUrl) // Provide fallback image
-            })
-            .catch(fallbackErr => {
-              console.error('Even fallback image failed:', fallbackErr)
-              if (errorCb) errorCb(err)
-            })
-        } else {
-          if (errorCb) errorCb(err)
-        }
-      })
+// Convert blob to data URL
+const blobToDataURL = async (blob) => {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader()
+    reader.onloadend = () => resolve(reader.result)
+    reader.onerror = reject
+    reader.readAsDataURL(blob)
+  })
+}
+
+// Pre-load all textures and replace paths with data URLs in the patch data
+const preloadTextures = async (patchData) => {
+  console.log('[PRELOAD] Starting texture preload...')
+  
+  if (!patchData.ops) {
+    console.log('[PRELOAD] No ops found in patch data')
+    return patchData
   }
+  
+  const textureLoadPromises = []
+  
+  patchData.ops.forEach((op, opIndex) => {
+    if (op.objName === 'Ops.Gl.Texture_v2' && op.portsIn) {
+      op.portsIn.forEach((port, portIndex) => {
+        if (port.name === 'File' && port.value) {
+          const originalPath = port.value
+          console.log(`[PRELOAD] Found texture: ${originalPath}`)
+          
+          // Create promise to load this texture
+          const loadPromise = (async () => {
+            try {
+              // Extract filename
+              const filename = originalPath.split('/').pop()
+              const assetPath = `${protectedAssets.getCablesAssetsPath()}${filename}`
+              
+              console.log(`[PRELOAD] Loading texture from: ${assetPath}`)
+              
+              // Fetch the asset as blob
+              const url = protectedAssets.getAssetUrl(assetPath)
+              const response = await fetch(url)
+              
+              if (!response.ok) {
+                throw new Error(`Failed to fetch: ${response.status}`)
+              }
+              
+              const blob = await response.blob()
+              
+              // Convert blob to data URL instead of object URL
+              const dataUrl = await blobToDataURL(blob)
+              
+              console.log(`[PRELOAD] Got data URL for ${filename} (length: ${dataUrl.length})`)
+              
+              // Replace the path in the patch data with the data URL
+              patchData.ops[opIndex].portsIn[portIndex].value = dataUrl
+              
+              // Cache it
+              assetCache.set(originalPath, dataUrl)
+              assetCache.set(filename, dataUrl)
+              
+              console.log(`[PRELOAD] Replaced texture path for ${filename}`)
+            } catch (error) {
+              console.error(`[PRELOAD] Error loading texture ${originalPath}:`, error)
+            }
+          })()
+          
+          textureLoadPromises.push(loadPromise)
+        }
+      })
+    }
+  })
+  
+  // Wait for all textures to load
+  if (textureLoadPromises.length > 0) {
+    console.log(`[PRELOAD] Waiting for ${textureLoadPromises.length} texture(s) to load...`)
+    await Promise.all(textureLoadPromises)
+    console.log('[PRELOAD] All textures loaded!')
+  } else {
+    console.log('[PRELOAD] No textures found to preload')
+  }
+  
+  return patchData
 }
 
 // Initialize CABLES canvas with all necessary configuration
 const initializeCanvas = async (canvas) => {
-  // Set initial dimensions
   canvas.width = window.innerWidth
   canvas.height = window.innerHeight
-  
-  // Hide canvas initially
   canvas.style.visibility = 'hidden'
   
   try {
     console.log('Loading CABLES configuration...')
-    const patchData = await protectedAssets.getCablesConfig()
+    let patchData = await protectedAssets.getCablesConfig()
     console.log('CABLES configuration loaded:', Object.keys(patchData))
     
-    // Create custom asset loader
-    const customAssetLoader = createCustomAssetLoader()
+    // Pre-load all textures and replace paths with data URLs
+    patchData = await preloadTextures(patchData)
     
-    // Create new patch instance
+    console.log('[CABLES INIT] Creating patch with preloaded textures')
+    
     const patch = new window.CABLES.Patch({
-      patch: patchData,           // Use directly loaded JSON data
-      canvas: canvas,             // Target canvas
+      patch: patchData,
+      canvas: canvas,
       glCanvasResizeToWindow: true,
-      loadingAsset: customAssetLoader,  // Use our custom asset loader
       onError: (initiator, ...args) => {
         console.error('[CABLES Error]', initiator, ...args)
       },
@@ -247,30 +185,22 @@ const initializeCanvas = async (canvas) => {
 }
 
 const handleImageError = () => {
-  console.warn('Failed to load protected static image, using fallback')
-  staticImageUrl.value = '/fallback-canvas.png'
+  console.error('Failed to load protected static image')
 }
 
 const cleanupAssetCache = () => {
-  // Revoke any object URLs to prevent memory leaks
-  for (const [key, value] of assetCache.entries()) {
-    if (typeof value === 'string' && value.startsWith('blob:')) {
-      try {
-        URL.revokeObjectURL(value)
-      } catch (e) {
-        console.warn(`Failed to revoke URL: ${value}`, e)
-      }
-    }
-  }
+  // No need to revoke data URLs
   assetCache.clear()
 }
 
 onMounted(async () => {
-  // Debug output to verify service is working
   protectedAssets.logAssetInfo()
   
-  // Load protected assets
-  await loadProtectedAssets()
+  try {
+    await loadProtectedAssets()
+  } catch (error) {
+    console.error('Failed to load protected assets:', error)
+  }
   
   if (window.CABLES && window.CABLES.Patch) {
     console.log('CABLES is available, initializing...')
@@ -301,7 +231,6 @@ onUnmounted(() => {
     }
   }
   
-  // Clean up cached assets
   cleanupAssetCache()
   protectedAssets.clearCache()
 })

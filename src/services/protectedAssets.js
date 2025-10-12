@@ -1,34 +1,43 @@
 class ProtectedAssetService {
   constructor() {
-    // Base URL for API
-    this.baseUrl = '/api/protected-asset';
+    // Validate environment variables
+    this.validateEnvironmentVariables();
+    
+    // Base URL for API from environment variable
+    this.baseUrl = import.meta.env.VITE_ASSET_BASE_URL;
     
     // Cache for fetched assets
     this.cache = new Map();
     
-    // Asset mappings
-    this.assetPaths = {
-      // Direct paths for JSON and static resources
-      staticImage: 'images/canvas-static.png',
-      cablesConfig: 'cables/BaumIntro.json',
-      
-      // Base paths for asset collections
-      cablesAssets: 'cables/assets/',
-      cablesOps: 'cables/js/'
-    };
+    // Asset paths from environment variables
+    this.assetPaths = this.initAssetPaths();
     
     // Asset mapping from environment variable
+    this.assetMap = this.initAssetMap();
+  }
+
+  validateEnvironmentVariables() {
+    const requiredVars = ['VITE_ASSET_BASE_URL', 'VITE_ASSET_PATHS', 'VITE_ASSET_MAP'];
+    const missing = requiredVars.filter(varName => !import.meta.env[varName]);
+    
+    if (missing.length > 0) {
+      throw new Error(`Missing required environment variables: ${missing.join(', ')}`);
+    }
+  }
+
+  initAssetPaths() {
     try {
-      this.assetMap = import.meta.env.VITE_ASSET_MAP ? 
-        JSON.parse(import.meta.env.VITE_ASSET_MAP) : 
-        {
-          "baum-intro-image": "_DSF2140_Kopie_2.png",
-          "cable-detail-1": "cable_001.jpg",
-          "cable-detail-2": "cable_002.jpg"
-        };
+      return JSON.parse(import.meta.env.VITE_ASSET_PATHS);
     } catch (e) {
-      console.error('Error parsing asset map:', e);
-      this.assetMap = {};
+      throw new Error(`Error parsing VITE_ASSET_PATHS: ${e.message}`);
+    }
+  }
+
+  initAssetMap() {
+    try {
+      return JSON.parse(import.meta.env.VITE_ASSET_MAP);
+    } catch (e) {
+      throw new Error(`Error parsing VITE_ASSET_MAP: ${e.message}`);
     }
   }
 
@@ -80,30 +89,6 @@ class ProtectedAssetService {
   }
 
   /**
-   * Get a mapped asset by its logical name
-   */
-  async getMappedAsset(logicalName) {
-    const filename = this.assetMap[logicalName];
-    if (!filename) {
-      throw new Error(`No mapping found for asset: ${logicalName}`);
-    }
-    
-    // Determine the path based on file extension
-    const ext = filename.split('.').pop().toLowerCase();
-    let basePath;
-    
-    if (['png', 'jpg', 'jpeg', 'gif', 'webp'].includes(ext)) {
-      basePath = this.assetPaths.cablesAssets;
-    } else if (['js', 'glsl'].includes(ext)) {
-      basePath = this.assetPaths.cablesOps;
-    } else {
-      basePath = this.assetPaths.cablesAssets; // Default to assets folder
-    }
-    
-    return this.fetchProtectedAsset(`${basePath}${filename}`);
-  }
-
-  /**
    * Get the static canvas image
    */
   async getStaticImage() {
@@ -132,21 +117,14 @@ class ProtectedAssetService {
    * Get the base URL for CABLES assets
    */
   getCablesAssetsPath() {
-    // Since we're using query parameters now, we return the full path pattern
-    return 'cables/assets/';
-}
+    return this.assetPaths.cablesAssets;
+  }
+
   /**
    * Get the base URL for CABLES operations
    */
   getCablesOpsPath() {
-    return 'cables/js/';
-}
-
-  /**
-   * Get a mapped CABLES asset by logical name
-   */
-  async getCablesAsset(assetName) {
-    return this.getMappedAsset(assetName);
+    return this.assetPaths.cablesOps;
   }
 
   /**
@@ -154,19 +132,6 @@ class ProtectedAssetService {
    */
   getAssetUrl(assetPath) {
     return `${this.baseUrl}?path=${encodeURIComponent(assetPath)}`;
-  }
-
-  /**
-   * Helper to get a mapped asset URL
-   */
-  getMappedAssetUrl(logicalName) {
-    const filename = this.assetMap[logicalName];
-    if (!filename) {
-      console.warn(`No mapping found for asset: ${logicalName}`);
-      return null;
-    }
-    
-    return this.getAssetUrl(`${this.assetPaths.cablesAssets}${filename}`);
   }
 
   /**
