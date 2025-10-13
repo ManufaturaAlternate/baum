@@ -4,9 +4,7 @@
   "devCommand": "npm run dev",
   "outputDirectory": "dist",
   "functions": {
-    "api/protected-assets/[...path].js": {
-      "memory": 1024
-    },
+    
     "api/protected-asset.js": {
       "memory": 1024
     }

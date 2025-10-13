@@ -5,28 +5,16 @@ const hoverKey = Symbol('hover')
 
 export function provideHover() {
   const isHovered = ref(false)
-  
-  const setHovered = (value) => {
-    isHovered.value = value
-  }
-
-  provide(hoverKey, {
-    isHovered,
-    setHovered
-  })
-
-  return {
-    isHovered,
-    setHovered
-  }
+  const setHovered = (v) => { isHovered.value = v }
+  provide(hoverKey, { isHovered, setHovered })
+  return { isHovered, setHovered }
 }
 
 export function useHover() {
-  const hover = inject(hoverKey)
-  
-  if (!hover) {
-    throw new Error('useHover must be used with provideHover')
-  }
-  
-  return hover
+  const hover = inject(hoverKey, null)
+  if (hover) return hover
+  // Fallback to avoid hard crashes
+  const isHovered = ref(false)
+  const setHovered = (v) => { isHovered.value = v }
+  return { isHovered, setHovered }
 }

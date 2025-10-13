@@ -1,4 +1,4 @@
-import { provide, inject } from 'vue'
+import { inject, provide } from 'vue'
 
 const LENIS_KEY = Symbol('lenis')
 
